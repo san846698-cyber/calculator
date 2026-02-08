@@ -30,7 +30,27 @@
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
-<div class="mobile-nav" id="mobileNav"><a href="salary.html">💰 연봉 실수령액</a><a href="loan.html">🏦 대출 이자</a><a href="savings.html">🐷 적금/예금</a><a href="rent.html">🏠 전세 vs 월세</a><a href="retire.html">📋 퇴직금</a><a href="unemploy.html">📊 실업급여</a><a href="weekly.html">⏰ 주휴수당</a><a href="yearend.html">🧾 연말정산</a><a href="broker.html">🏢 중개수수료</a><a href="incometax.html">📈 종합소득세</a></div>
+<div class="mobile-nav" id="mobileNav">
+<a href="index.html">🏠 홈</a>
+<a href="salary.html">💰 연봉 실수령액</a>
+<a href="loan.html">🏦 대출 이자</a>
+<a href="savings.html">🐷 적금/예금</a>
+<a href="rent.html">🏠 전세 vs 월세</a>
+<a href="retire.html">📋 퇴직금</a>
+<a href="unemploy.html">📊 실업급여</a>
+<a href="weekly.html">⏰ 주휴수당</a>
+<a href="yearend.html">🧾 연말정산</a>
+<a href="broker.html">🏢 중개수수료</a>
+<a href="incometax.html">📈 종합소득세</a>
+<a href="overtime.html">⏱️ 시간외근무</a>
+<a href="insurance.html">🏥 4대보험</a>
+<a href="annualleave.html">📅 연차</a>
+<a href="cartax.html">🚗 취등록세</a>
+<a href="capitalgain.html">🏠 양도소득세</a>
+<a href="rentcredit.html">💸 월세 세액공제</a>
+<a href="regular.html">📊 통상임금</a>
+<a href="bmi.html">🏃 BMI</a>
+</div>
 
 <div class="container">
     <div class="page-header">
@@ -65,11 +85,11 @@
                 <div class="input-row">
                     <div class="form-group">
                         <label>신용카드 사용액 (연)</label>
-                        <div class="input-wrap"><input type="text" id="creditCard" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="creditCard" placeholder="1,200" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                     <div class="form-group">
                         <label>체크카드/현금영수증 (연)</label>
-                        <div class="input-wrap"><input type="text" id="debitCard" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="debitCard" placeholder="600" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                 </div>
 
@@ -77,26 +97,26 @@
                 <div class="input-row">
                     <div class="form-group">
                         <label>의료비 (연)</label>
-                        <div class="input-wrap"><input type="text" id="medical" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="medical" placeholder="200" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                     <div class="form-group">
                         <label>교육비 (연)</label>
-                        <div class="input-wrap"><input type="text" id="education" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="education" placeholder="300" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                 </div>
                 <div class="input-row">
                     <div class="form-group">
                         <label>보험료 (연) <span class="hint">· 보장성보험</span></label>
-                        <div class="input-wrap"><input type="text" id="insurance" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="insurance" placeholder="100" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                     <div class="form-group">
                         <label>연금저축/IRP (연)</label>
-                        <div class="input-wrap"><input type="text" id="pension" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                        <div class="input-wrap"><input type="text" id="pension" placeholder="400" inputmode="numeric"><span class="unit">만원</span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>기부금 (연)</label>
-                    <div class="input-wrap"><input type="text" id="donation" placeholder="0" value="0" inputmode="numeric"><span class="unit">만원</span></div>
+                    <div class="input-wrap"><input type="text" id="donation" placeholder="0" inputmode="numeric"><span class="unit">만원</span></div>
                 </div>
 
                 <button class="btn-calc" onclick="calcYearEnd()">환급액 계산하기</button>
