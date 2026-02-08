@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연차 계산기 2026 - 입사일 기준 연차 발생일수 | 월급쟁이 계산기</title>
+    <meta name="description" content="연차 계산기. 입사일을 입력하면 올해 발생 연차일수, 누적 연차, 잔여 연차를 자동으로 계산합니다. 근로기준법 기준.">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#F5F6F8;--surface:#FFF;--primary:#1A56DB;--primary-light:#EBF0FE;--primary-dark:#1342A8;--text-900:#111827;--text-700:#374151;--text-500:#6B7280;--text-400:#9CA3AF;--border:#E5E7EB;--border-light:#F3F4F6;--success:#059669;--danger:#DC2626;--ad-bg:#E5E7EB;--shadow:0 1px 3px rgba(0,0,0,.06);--radius:12px;--radius-lg:16px}html{font-size:16px}body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text-900);line-height:1.6;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}
+        .top-nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}.nav-logo{font-size:1.15rem;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}.nav-logo .icon{width:28px;height:28px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:900}.nav-links{display:flex;gap:4px}.nav-links a{padding:6px 12px;font-size:.85rem;font-weight:500;color:var(--text-500);border-radius:8px;transition:all .15s}.nav-links a:hover,.nav-links a.active{color:var(--primary);background:var(--primary-light)}@media(max-width:640px){.nav-links{display:none}}.mobile-menu-btn{display:none;background:none;border:none;padding:8px;cursor:pointer;color:var(--text-700)}@media(max-width:640px){.mobile-menu-btn{display:block}}.mobile-nav{display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 20px 16px}.mobile-nav.open{display:block}.mobile-nav a{display:block;padding:10px 12px;font-size:.9rem;font-weight:500;color:var(--text-700);border-radius:8px}
+        .container{max-width:1080px;margin:0 auto;padding:0 20px}.page-layout{display:grid;grid-template-columns:1fr 300px;gap:24px;margin:32px 0}@media(max-width:860px){.page-layout{grid-template-columns:1fr}}.page-header{margin:32px 0 8px}.breadcrumb{font-size:.8rem;color:var(--text-400);margin-bottom:8px}.breadcrumb a{color:var(--text-500)}.page-header h1{font-size:1.6rem;font-weight:900}.page-header p{font-size:.9rem;color:var(--text-500);margin-top:4px}
+        .ad-space{background:var(--ad-bg);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--text-400);font-size:.78rem}.ad-banner{height:90px;max-width:728px;margin:20px auto}.ad-sidebar{height:250px;margin-bottom:16px}.ad-rect{height:250px;max-width:728px;margin:24px auto}
+        .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;box-shadow:var(--shadow)}.calc-card h2{font-size:1rem;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.form-group{margin-bottom:16px}.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-700);margin-bottom:6px}.form-group .hint{font-size:.75rem;color:var(--text-400);font-weight:400}
+        .input-wrap{position:relative}.input-wrap input{width:100%;height:48px;padding:0 16px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--text-900);background:var(--bg);outline:none;transition:border-color .15s}.input-wrap input:focus{border-color:var(--primary);background:#fff}
+        .btn-calc{width:100%;height:52px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}.btn-calc:hover{background:var(--primary-dark)}
+        .result-card{background:var(--surface);border:2px solid var(--primary);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;display:none}.result-card.show{display:block}.result-header{text-align:center;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:20px}.result-header .label{font-size:.82rem;font-weight:600;color:var(--text-500);margin-bottom:4px}.result-header .amount{font-size:2.2rem;font-weight:900;color:var(--primary);letter-spacing:-.03em}.result-header .sub{font-size:.85rem;color:var(--text-500);margin-top:4px}
+        .result-highlight{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}.result-highlight .item{text-align:center;padding:16px;background:var(--bg);border-radius:10px}.result-highlight .item .val{font-size:1.3rem;font-weight:800;color:var(--primary);margin-bottom:2px}.result-highlight .item .lbl{font-size:.75rem;color:var(--text-400);font-weight:500}@media(max-width:480px){.result-highlight{grid-template-columns:1fr}}
+        .result-table{width:100%;border-collapse:collapse;margin-top:20px}.result-table tr{border-bottom:1px solid var(--border-light)}.result-table tr:last-child{border:none}.result-table td{padding:10px 0;font-size:.88rem}.result-table td:first-child{color:var(--text-500);font-weight:500}.result-table td:last-child{text-align:right;font-weight:700}
+        .year-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.82rem}.year-table th{background:var(--bg);padding:8px 10px;font-weight:600;color:var(--text-500);text-align:center;border:1px solid var(--border)}.year-table td{padding:8px 10px;text-align:center;border:1px solid var(--border)}.year-table .current{background:var(--primary-light);font-weight:700}
+        .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
+        .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
+        footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
+    </style>
+</head>
+<body>
+<nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">🏠 홈</a><a href="salary.html">💰 연봉 실수령액</a><a href="loan.html">🏦 대출 이자</a><a href="savings.html">🐷 적금/예금</a><a href="rent.html">🏠 전세 vs 월세</a></div>
+
+<div class="container">
+    <div class="page-header">
+        <div class="breadcrumb"><a href="index.html">홈</a> &gt; 연차 계산기</div>
+        <h1>연차 계산기</h1>
+        <p>입사일을 입력하면 연차 발생일수와 연도별 내역을 계산합니다.</p>
+    </div>
+    <div class="ad-space ad-banner">Advertisement</div>
+
+    <div class="page-layout">
+        <div class="main-content">
+            <div class="calc-card">
+                <h2>📅 연차 정보 입력</h2>
+                <div class="form-group">
+                    <label>입사일</label>
+                    <div class="input-wrap"><input type="date" id="startDate" value="2022-03-02"></div>
+                </div>
+                <div class="form-group">
+                    <label>기준일 <span class="hint">· 오늘 날짜 기본</span></label>
+                    <div class="input-wrap"><input type="date" id="today"></div>
+                </div>
+                <button class="btn-calc" onclick="calcLeave()">연차 계산하기</button>
+            </div>
+
+            <div class="result-card" id="resultCard">
+                <div class="result-header">
+                    <div class="label">올해 발생 연차일수</div>
+                    <div class="amount" id="resultAmount">0일</div>
+                    <div class="sub" id="resultSub"></div>
+                </div>
+                <div class="result-highlight">
+                    <div class="item"><div class="val" id="r_tenure">0년</div><div class="lbl">근속연수</div></div>
+                    <div class="item"><div class="val" id="r_thisYear">0일</div><div class="lbl">올해 연차</div></div>
+                    <div class="item"><div class="val" id="r_cumulative">0일</div><div class="lbl">누적 총 연차</div></div>
+                </div>
+                <h3 style="font-size:.9rem;font-weight:700;margin-top:24px;margin-bottom:8px">📋 연도별 연차 발생 내역</h3>
+                <table class="year-table" id="yearTable">
+                    <thead><tr><th>연차</th><th>기간</th><th>발생일수</th></tr></thead>
+                    <tbody id="yearBody"></tbody>
+                </table>
+            </div>
+
+            <div class="seo-section">
+                <h2>연차 계산기 사용법</h2>
+                <h3>연차 발생 기준 (근로기준법)</h3>
+                <p>입사 후 1년 미만: 1개월 개근 시 1일의 연차가 발생합니다 (최대 11일). 입사 후 1년 이상: 1년간 80% 이상 출근 시 15일의 연차가 발생합니다. 3년차부터 2년마다 1일씩 추가되어 최대 25일까지 늘어납니다.</p>
+                <h3>가산 연차</h3>
+                <p>3년차에 16일, 5년차에 17일, 7년차에 18일... 이런 식으로 2년마다 1일씩 추가됩니다. 최대 한도는 25일입니다.</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="ad-space ad-sidebar">Advertisement</div>
+            <div class="sidebar-card">
+                <h3>📌 관련 계산기</h3>
+                <a href="salary.html">💰 연봉 실수령액 계산기</a>
+                <a href="retire.html">📋 퇴직금 계산기</a>
+                <a href="overtime.html">⏰ 시간외근무 수당</a>
+                <a href="weekly.html">⏰ 주휴수당 계산기</a>
+            </div>
+            <div class="ad-space ad-sidebar">Advertisement</div>
+        </div>
+    </div>
+    <div class="ad-space ad-rect">Advertisement</div>
+</div>
+<footer><div class="container"><p>© 2026 월급쟁이 계산기.</p><p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p></div></footer>
+
+<script>
+// Set today's date as default
+document.getElementById('today').value=new Date().toISOString().split('T')[0];
+
+function calcLeave(){
+    const start=new Date(document.getElementById('startDate').value);
+    const today=new Date(document.getElementById('today').value);
+    if(today<=start) return alert('기준일은 입사일 이후여야 합니다.');
+
+    const diffMs=today-start;
+    const totalDays=Math.floor(diffMs/(1000*60*60*24));
+    const totalMonths=Math.floor(totalDays/30.44);
+    const totalYears=totalDays/365.25;
+    const fullYears=Math.floor(totalYears);
+
+    let currentYearLeave=0;
+    let cumulativeLeave=0;
+    const rows=[];
+
+    if(fullYears<1){
+        // 1년 미만: 월 1일씩
+        currentYearLeave=Math.min(totalMonths, 11);
+        cumulativeLeave=currentYearLeave;
+        rows.push({label:'1년차 (월차)', period:formatDate(start)+' ~', days:currentYearLeave+'일 ('+totalMonths+'개월 개근)', current:true});
+    } else {
+        // 1년차 월차
+        const firstYearDays=11;
+        rows.push({label:'1년차 (월차)', period:formatDate(start)+' ~ '+formatDate(addYears(start,1)), days:'11일', current:false});
+        cumulativeLeave+=firstYearDays;
+
+        for(let y=1;y<=fullYears;y++){
+            let days=15;
+            if(y>=3) days=15+Math.floor((y-1)/2);
+            days=Math.min(days, 25);
+
+            const periodStart=addYears(start, y);
+            const periodEnd=addYears(start, y+1);
+            const isCurrent=(y===fullYears);
+
+            rows.push({
+                label:(y+1)+'년차',
+                period:formatDate(periodStart)+' ~ '+formatDate(periodEnd),
+                days:days+'일',
+                current:isCurrent
+            });
+
+            cumulativeLeave+=days;
+            if(isCurrent) currentYearLeave=days;
+        }
+    }
+
+    document.getElementById('resultAmount').textContent=currentYearLeave+'일';
+    document.getElementById('resultSub').textContent='근속 '+fullYears+'년 '+Math.round(totalDays%365)+'일 · 입사일 '+formatDate(start);
+    document.getElementById('r_tenure').textContent=totalYears.toFixed(1)+'년';
+    document.getElementById('r_thisYear').textContent=currentYearLeave+'일';
+    document.getElementById('r_cumulative').textContent=cumulativeLeave+'일';
+
+    const tbody=document.getElementById('yearBody');
+    tbody.innerHTML='';
+    rows.forEach(r=>{
+        const tr=document.createElement('tr');
+        if(r.current) tr.className='current';
+        tr.innerHTML='<td>'+r.label+'</td><td>'+r.period+'</td><td>'+r.days+'</td>';
+        tbody.appendChild(tr);
+    });
+
+    document.getElementById('resultCard').classList.add('show');
+    document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function formatDate(d){
+    return d.getFullYear()+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getDate().toString().padStart(2,'0');
+}
+function addYears(d,y){
+    const n=new Date(d);
+    n.setFullYear(n.getFullYear()+y);
+    return n;
+}
+</script>
+</body>
+</html>

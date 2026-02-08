@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간외근무 수당 계산기 2026 - 연장 야간 휴일근무 수당 | 월급쟁이 계산기</title>
+    <meta name="description" content="시간외근무 수당 계산기. 연장근로, 야간근로, 휴일근로 수당을 자동으로 계산합니다. 통상시급 기준 할증률 적용.">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#F5F6F8;--surface:#FFF;--primary:#1A56DB;--primary-light:#EBF0FE;--primary-dark:#1342A8;--text-900:#111827;--text-700:#374151;--text-500:#6B7280;--text-400:#9CA3AF;--border:#E5E7EB;--border-light:#F3F4F6;--success:#059669;--danger:#DC2626;--ad-bg:#E5E7EB;--shadow:0 1px 3px rgba(0,0,0,.06);--radius:12px;--radius-lg:16px}html{font-size:16px}body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text-900);line-height:1.6;-webkit-font-smoothing:antialiased}a{text-decoration:none;color:inherit}
+        .top-nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}.nav-logo{font-size:1.15rem;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}.nav-logo .icon{width:28px;height:28px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:900}.nav-links{display:flex;gap:4px}.nav-links a{padding:6px 12px;font-size:.85rem;font-weight:500;color:var(--text-500);border-radius:8px;transition:all .15s}.nav-links a:hover,.nav-links a.active{color:var(--primary);background:var(--primary-light)}@media(max-width:640px){.nav-links{display:none}}.mobile-menu-btn{display:none;background:none;border:none;padding:8px;cursor:pointer;color:var(--text-700)}@media(max-width:640px){.mobile-menu-btn{display:block}}.mobile-nav{display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 20px 16px}.mobile-nav.open{display:block}.mobile-nav a{display:block;padding:10px 12px;font-size:.9rem;font-weight:500;color:var(--text-700);border-radius:8px}
+        .container{max-width:1080px;margin:0 auto;padding:0 20px}.page-layout{display:grid;grid-template-columns:1fr 300px;gap:24px;margin:32px 0}@media(max-width:860px){.page-layout{grid-template-columns:1fr}}.page-header{margin:32px 0 8px}.breadcrumb{font-size:.8rem;color:var(--text-400);margin-bottom:8px}.breadcrumb a{color:var(--text-500)}.page-header h1{font-size:1.6rem;font-weight:900}.page-header p{font-size:.9rem;color:var(--text-500);margin-top:4px}
+        .ad-space{background:var(--ad-bg);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--text-400);font-size:.78rem}.ad-banner{height:90px;max-width:728px;margin:20px auto}.ad-sidebar{height:250px;margin-bottom:16px}.ad-rect{height:250px;max-width:728px;margin:24px auto}
+        .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;box-shadow:var(--shadow)}.calc-card h2{font-size:1rem;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}.form-group{margin-bottom:16px}.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-700);margin-bottom:6px}.form-group .hint{font-size:.75rem;color:var(--text-400);font-weight:400}
+        .input-wrap{position:relative}.input-wrap input,.input-wrap select{width:100%;height:48px;padding:0 44px 0 16px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:1rem;font-weight:600;color:var(--text-900);background:var(--bg);outline:none;transition:border-color .15s}.input-wrap input:focus,.input-wrap select:focus{border-color:var(--primary);background:#fff}.input-wrap .unit{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.85rem;font-weight:600;color:var(--text-400);pointer-events:none}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:480px){.input-row{grid-template-columns:1fr}}
+        .section-label{font-size:.82rem;font-weight:700;color:var(--primary);letter-spacing:.04em;margin:20px 0 12px;padding:8px 12px;background:var(--primary-light);border-radius:8px;display:inline-block}
+        .btn-calc{width:100%;height:52px;background:var(--primary);color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:8px}.btn-calc:hover{background:var(--primary-dark)}
+        .result-card{background:var(--surface);border:2px solid var(--primary);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;display:none}.result-card.show{display:block}.result-header{text-align:center;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:20px}.result-header .label{font-size:.82rem;font-weight:600;color:var(--text-500);margin-bottom:4px}.result-header .amount{font-size:2.2rem;font-weight:900;color:var(--primary);letter-spacing:-.03em}.result-header .sub{font-size:.85rem;color:var(--text-500);margin-top:4px}
+        .result-table{width:100%;border-collapse:collapse}.result-table tr{border-bottom:1px solid var(--border-light)}.result-table tr:last-child{border:none}.result-table td{padding:10px 0;font-size:.88rem}.result-table td:first-child{color:var(--text-500);font-weight:500}.result-table td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+        .info-box{background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:.82rem;color:#92400E;line-height:1.6}
+        .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
+        .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
+        footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
+    </style>
+</head>
+<body>
+<nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">🏠 홈</a><a href="salary.html">💰 연봉 실수령액</a><a href="loan.html">🏦 대출 이자</a><a href="savings.html">🐷 적금/예금</a><a href="rent.html">🏠 전세 vs 월세</a><a href="retire.html">📋 퇴직금</a><a href="unemploy.html">📊 실업급여</a><a href="weekly.html">⏰ 주휴수당</a></div>
+
+<div class="container">
+    <div class="page-header">
+        <div class="breadcrumb"><a href="index.html">홈</a> &gt; 시간외근무 수당 계산기</div>
+        <h1>시간외근무 수당 계산기</h1>
+        <p>연장·야간·휴일근무 수당을 통상시급 기준으로 계산합니다.</p>
+    </div>
+    <div class="ad-space ad-banner">Advertisement</div>
+
+    <div class="page-layout">
+        <div class="main-content">
+            <div class="calc-card">
+                <h2>⏰ 근무 정보 입력</h2>
+                <div class="form-group">
+                    <label>통상시급 <span class="hint">· 모르면 월급÷209 입력</span></label>
+                    <div class="input-wrap"><input type="text" id="hourlyPay" placeholder="15,000" inputmode="numeric"><span class="unit">원</span></div>
+                </div>
+                <div class="section-label">연장근로 (평일 8시간 초과)</div>
+                <div class="form-group">
+                    <label>월 연장근로 시간 <span class="hint">· 할증 50%</span></label>
+                    <div class="input-wrap"><input type="number" id="overtime" value="0" inputmode="numeric"><span class="unit">시간</span></div>
+                </div>
+                <div class="section-label">야간근로 (22시~06시)</div>
+                <div class="form-group">
+                    <label>월 야간근로 시간 <span class="hint">· 할증 50%</span></label>
+                    <div class="input-wrap"><input type="number" id="nighttime" value="0" inputmode="numeric"><span class="unit">시간</span></div>
+                </div>
+                <div class="section-label">휴일근로</div>
+                <div class="input-row">
+                    <div class="form-group">
+                        <label>휴일 8시간 이내 <span class="hint">· 할증 50%</span></label>
+                        <div class="input-wrap"><input type="number" id="holiday8" value="0" inputmode="numeric"><span class="unit">시간</span></div>
+                    </div>
+                    <div class="form-group">
+                        <label>휴일 8시간 초과 <span class="hint">· 할증 100%</span></label>
+                        <div class="input-wrap"><input type="number" id="holiday8over" value="0" inputmode="numeric"><span class="unit">시간</span></div>
+                    </div>
+                </div>
+                <button class="btn-calc" onclick="calcOvertime()">수당 계산하기</button>
+            </div>
+
+            <div class="result-card" id="resultCard">
+                <div class="result-header">
+                    <div class="label">월 시간외근무 수당 합계</div>
+                    <div class="amount" id="resultAmount">0원</div>
+                    <div class="sub" id="resultSub"></div>
+                </div>
+                <table class="result-table">
+                    <tr><td>통상시급</td><td id="r_hourly">0원</td></tr>
+                    <tr><td>연장근로 수당 (×1.5)</td><td id="r_overtime" style="color:var(--success)">0원</td></tr>
+                    <tr><td>야간근로 수당 (×1.5)</td><td id="r_night" style="color:var(--success)">0원</td></tr>
+                    <tr><td>휴일근로 8h이내 (×1.5)</td><td id="r_hol8" style="color:var(--success)">0원</td></tr>
+                    <tr><td>휴일근로 8h초과 (×2.0)</td><td id="r_hol8o" style="color:var(--success)">0원</td></tr>
+                    <tr><td style="font-weight:900">합계</td><td id="r_total" style="font-weight:900;color:var(--primary)">0원</td></tr>
+                </table>
+                <div class="info-box">⚠️ 5인 미만 사업장은 연장·야간·휴일 할증이 적용되지 않을 수 있습니다. 야간+연장이 중복되면 할증률이 합산(100%)됩니다.</div>
+            </div>
+
+            <div class="seo-section">
+                <h2>시간외근무 수당 계산법</h2>
+                <h3>연장근로 수당</h3>
+                <p>1일 8시간, 1주 40시간을 초과하는 근로에 대해 통상임금의 50%를 가산하여 지급합니다. 즉, 통상시급 × 1.5 × 연장시간입니다.</p>
+                <h3>야간근로 수당</h3>
+                <p>22시부터 다음날 06시까지의 근로에 대해 통상임금의 50%를 가산합니다. 연장근로와 야간근로가 중복되면 각각의 할증률이 합산되어 통상시급의 200%를 받습니다.</p>
+                <h3>휴일근로 수당</h3>
+                <p>휴일에 8시간 이내 근무 시 50% 할증, 8시간 초과 시 100% 할증이 적용됩니다.</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="ad-space ad-sidebar">Advertisement</div>
+            <div class="sidebar-card">
+                <h3>📌 관련 계산기</h3>
+                <a href="salary.html">💰 연봉 실수령액 계산기</a>
+                <a href="weekly.html">⏰ 주휴수당 계산기</a>
+                <a href="regular.html">📊 통상임금 계산기</a>
+                <a href="retire.html">📋 퇴직금 계산기</a>
+            </div>
+            <div class="ad-space ad-sidebar">Advertisement</div>
+        </div>
+    </div>
+    <div class="ad-space ad-rect">Advertisement</div>
+</div>
+<footer><div class="container"><p>© 2026 월급쟁이 계산기.</p><p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p></div></footer>
+
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
+function fmtWon(n){return fmt(n)+'원'}
+document.getElementById('hourlyPay').addEventListener('input',function(e){
+    let v=e.target.value.replace(/,/g,'').replace(/[^0-9]/g,'');
+    if(v)e.target.value=parseInt(v).toLocaleString();else e.target.value='';
+});
+function calcOvertime(){
+    const hourly=parseInt(document.getElementById('hourlyPay').value.replace(/,/g,''))||0;
+    const ot=parseFloat(document.getElementById('overtime').value)||0;
+    const nt=parseFloat(document.getElementById('nighttime').value)||0;
+    const h8=parseFloat(document.getElementById('holiday8').value)||0;
+    const h8o=parseFloat(document.getElementById('holiday8over').value)||0;
+    if(!hourly) return alert('통상시급을 입력해주세요.');
+    const otPay=hourly*1.5*ot;
+    const ntPay=hourly*1.5*nt;
+    const h8Pay=hourly*1.5*h8;
+    const h8oPay=hourly*2.0*h8o;
+    const total=otPay+ntPay+h8Pay+h8oPay;
+    document.getElementById('r_hourly').textContent=fmtWon(hourly);
+    document.getElementById('r_overtime').textContent='+'+fmtWon(otPay)+' ('+ot+'h)';
+    document.getElementById('r_night').textContent='+'+fmtWon(ntPay)+' ('+nt+'h)';
+    document.getElementById('r_hol8').textContent='+'+fmtWon(h8Pay)+' ('+h8+'h)';
+    document.getElementById('r_hol8o').textContent='+'+fmtWon(h8oPay)+' ('+h8o+'h)';
+    document.getElementById('r_total').textContent=fmtWon(total);
+    document.getElementById('resultAmount').textContent=fmtWon(total);
+    document.getElementById('resultSub').textContent='통상시급 '+fmtWon(hourly)+' 기준';
+    document.getElementById('resultCard').classList.add('show');
+    document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
