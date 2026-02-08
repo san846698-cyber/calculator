@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>월급쟁이 계산기 - 연봉, 대출, 적금, 전세/월세 계산기 모음</title>
+    <meta name="description" content="직장인을 위한 금융 계산기 모음. 연봉 실수령액, 대출 이자, 적금/예금 이자, 전세 vs 월세 비교까지 한번에 계산하세요. 무료, 회원가입 없음.">
+    <meta name="keywords" content="연봉 계산기, 대출 이자 계산기, 적금 계산기, 전세 월세 비교, 실수령액 계산기, 퇴직금 계산기">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #F5F6F8;
+            --surface: #FFFFFF;
+            --primary: #1A56DB;
+            --primary-light: #EBF0FE;
+            --primary-dark: #1342A8;
+            --text-900: #111827;
+            --text-700: #374151;
+            --text-500: #6B7280;
+            --text-400: #9CA3AF;
+            --border: #E5E7EB;
+            --border-light: #F3F4F6;
+            --success: #059669;
+            --danger: #DC2626;
+            --warning: #D97706;
+            --ad-bg: #E5E7EB;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03);
+            --radius: 12px;
+            --radius-lg: 16px;
+        }
+        html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text-900);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* Top Nav */
+        .top-nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-logo .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+        .nav-links {
+            display: flex;
+            gap: 4px;
+        }
+        .nav-links a {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-500);
+            border-radius: 8px;
+            transition: all 0.15s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+            color: var(--text-900);
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-500);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        @media (max-width: 640px) {
+            .hero { padding: 32px 0 24px; }
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 0.9rem; }
+        }
+
+        /* Ad Space */
+        .ad-space {
+            background: var(--ad-bg);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-400);
+            font-size: 0.78rem;
+            font-weight: 500;
+            margin: 24px auto;
+            max-width: 728px;
+        }
+        .ad-banner { height: 90px; }
+        .ad-rect { height: 250px; }
+
+        /* Calculator Grid */
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 640px) {
+            .calc-grid { grid-template-columns: 1fr; }
+        }
+        .calc-link {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: block;
+        }
+        .calc-link:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .calc-link .emoji {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .calc-link .emoji.blue { background: #EBF0FE; }
+        .calc-link .emoji.green { background: #ECFDF5; }
+        .calc-link .emoji.orange { background: #FEF3C7; }
+        .calc-link .emoji.red { background: #FEE2E2; }
+        .calc-link h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .calc-link p {
+            font-size: 0.85rem;
+            color: var(--text-500);
+            line-height: 1.5;
+        }
+        .calc-link .tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border-radius: 100px;
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+        .calc-link .tag.popular {
+            color: var(--danger);
+            background: #FEE2E2;
+        }
+
+        /* Coming Soon Grid */
+        .coming-section {
+            margin: 32px 0;
+        }
+        .coming-section h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-700);
+        }
+        .coming-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 640px) {
+            .coming-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .coming-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            opacity: 0.6;
+        }
+        .coming-item .emoji { font-size: 1.3rem; margin-bottom: 8px; }
+        .coming-item .name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-700);
+        }
+        .coming-item .badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 2px 8px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            border-radius: 100px;
+            background: var(--border-light);
+            color: var(--text-400);
+        }
+
+        /* SEO Section */
+        .seo-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            margin: 32px 0;
+        }
+        .seo-section h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .seo-section p {
+            font-size: 0.88rem;
+            color: var(--text-500);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        .seo-section p:last-child { margin-bottom: 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            padding: 32px 0;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.78rem;
+            color: var(--text-400);
+            margin-bottom: 4px;
+        }
+        footer a { color: var(--text-500); }
+        footer a:hover { color: var(--primary); }
+
+        /* Mobile nav toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: var(--text-700);
+        }
+        @media (max-width: 640px) {
+            .mobile-menu-btn { display: block; }
+        }
+        .mobile-nav {
+            display: none;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 8px 20px 16px;
+        }
+        .mobile-nav.open { display: block; }
+        .mobile-nav a {
+            display: block;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-700);
+            border-radius: 8px;
+        }
+        .mobile-nav a:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <div class="icon">₩</div>
+            월급쟁이 계산기
+        </a>
+        <div class="nav-links">
+            <a href="salary.html">연봉 실수령액</a>
+            <a href="loan.html">대출 이자</a>
+            <a href="savings.html">적금/예금</a>
+            <a href="rent.html">전세 vs 월세</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="salary.html">💰 연봉 실수령액 계산기</a>
+    <a href="loan.html">🏦 대출 이자 계산기</a>
+    <a href="savings.html">🐷 적금/예금 이자 계산기</a>
+    <a href="rent.html">🏠 전세 vs 월세 비교</a>
+</div>
+
+<div class="container">
+    <section class="hero">
+        <h1><span>월급쟁이</span>를 위한<br>금융 계산기 모음</h1>
+        <p>연봉, 대출, 적금, 전세/월세까지<br>직장인에게 필요한 계산기를 한곳에 모았습니다.</p>
+    </section>
+
+    <!-- Ad: Top Banner -->
+    <div class="ad-space ad-banner">Advertisement</div>
+
+    <div class="calc-grid">
+        <a href="salary.html" class="calc-link">
+            <div class="emoji blue">💰</div>
+            <h2>연봉 실수령액 계산기</h2>
+            <p>2026년 기준 4대보험, 소득세를 적용한 월 실수령액을 계산합니다.</p>
+            <span class="tag popular">🔥 인기</span>
+        </a>
+        <a href="loan.html" class="calc-link">
+            <div class="emoji green">🏦</div>
+            <h2>대출 이자 계산기</h2>
+            <p>원리금균등, 원금균등, 만기일시 상환 방식별 월 납입액과 총 이자를 계산합니다.</p>
+            <span class="tag popular">🔥 인기</span>
+        </a>
+        <a href="savings.html" class="calc-link">
+            <div class="emoji orange">🐷</div>
+            <h2>적금/예금 이자 계산기</h2>
+            <p>단리·복리 적용 이자와 세후 실수령 이자를 한번에 계산합니다.</p>
+            <span class="tag">추천</span>
+        </a>
+        <a href="rent.html" class="calc-link">
+            <div class="emoji red">🏠</div>
+            <h2>전세 vs 월세 비교 계산기</h2>
+            <p>전세와 월세 중 어떤 게 더 유리한지 기회비용까지 비교 분석합니다.</p>
+            <span class="tag">추천</span>
+        </a>
+    </div>
+
+    <!-- Ad: Middle -->
+    <div class="ad-space ad-rect">Advertisement</div>
+
+    <section class="coming-section">
+        <h3>🚀 추가 예정 계산기</h3>
+        <div class="coming-grid">
+            <div class="coming-item">
+                <div class="emoji">📋</div>
+                <div class="name">퇴직금 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+            <div class="coming-item">
+                <div class="emoji">📊</div>
+                <div class="name">실업급여 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+            <div class="coming-item">
+                <div class="emoji">⏰</div>
+                <div class="name">주휴수당 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+            <div class="coming-item">
+                <div class="emoji">🧾</div>
+                <div class="name">연말정산 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+            <div class="coming-item">
+                <div class="emoji">🏢</div>
+                <div class="name">중개수수료 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+            <div class="coming-item">
+                <div class="emoji">📈</div>
+                <div class="name">종합소득세 계산기</div>
+                <span class="badge">준비 중</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-section">
+        <h2>월급쟁이 계산기란?</h2>
+        <p>월급쟁이 계산기는 대한민국 직장인을 위한 무료 금융 계산기 서비스입니다. 연봉 협상 시 실수령액이 궁금할 때, 주택 대출 이자가 얼마나 나올지 알고 싶을 때, 적금 만기 수령액을 미리 확인하고 싶을 때 활용하세요.</p>
+        <p>모든 계산기는 2026년 최신 세율과 4대보험 요율을 반영하고 있으며, 회원가입 없이 누구나 무료로 사용할 수 있습니다. 계산 결과는 참고용이며 법적 효력이 없으므로, 정확한 금액은 관련 기관에 문의하시기 바랍니다.</p>
+    </section>
+
+    <!-- Ad: Bottom -->
+    <div class="ad-space ad-rect">Advertisement</div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 월급쟁이 계산기. 직장인을 위한 무료 금융 계산기.</p>
+        <p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
+    </div>
+</footer>
+
+</body>
+</html>

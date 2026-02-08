@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 연봉 실수령액 계산기 - 월급쟁이 계산기</title>
+    <meta name="description" content="2026년 연봉 실수령액 계산기. 4대보험, 소득세, 지방소득세를 적용한 월 실수령액을 즉시 계산합니다. 연봉 3000만원, 4000만원, 5000만원 실수령액 확인.">
+    <meta name="keywords" content="연봉 계산기, 실수령액 계산기, 2026 연봉, 월급 계산기, 4대보험 계산, 소득세 계산">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #F5F6F8; --surface: #FFFFFF; --primary: #1A56DB; --primary-light: #EBF0FE;
+            --primary-dark: #1342A8; --text-900: #111827; --text-700: #374151; --text-500: #6B7280;
+            --text-400: #9CA3AF; --border: #E5E7EB; --border-light: #F3F4F6; --success: #059669;
+            --danger: #DC2626; --ad-bg: #E5E7EB; --shadow: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05); --radius: 12px; --radius-lg: 16px;
+        }
+        html { font-size: 16px; }
+        body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: var(--bg); color: var(--text-900); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; color: inherit; }
+        .top-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-logo .icon { width: 28px; height: 28px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 900; }
+        .nav-links { display: flex; gap: 4px; }
+        .nav-links a { padding: 6px 12px; font-size: 0.85rem; font-weight: 500; color: var(--text-500); border-radius: 8px; transition: all 0.15s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--primary-light); }
+        @media (max-width: 640px) { .nav-links { display: none; } }
+        .mobile-menu-btn { display: none; background: none; border: none; padding: 8px; cursor: pointer; color: var(--text-700); }
+        @media (max-width: 640px) { .mobile-menu-btn { display: block; } }
+        .mobile-nav { display: none; background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 20px 16px; }
+        .mobile-nav.open { display: block; }
+        .mobile-nav a { display: block; padding: 10px 12px; font-size: 0.9rem; font-weight: 500; color: var(--text-700); border-radius: 8px; }
+        .mobile-nav a:hover { background: var(--primary-light); color: var(--primary); }
+
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        .page-layout { display: grid; grid-template-columns: 1fr 300px; gap: 24px; margin: 32px 0; }
+        @media (max-width: 860px) { .page-layout { grid-template-columns: 1fr; } }
+
+        .page-header { margin: 32px 0 8px; }
+        .breadcrumb { font-size: 0.8rem; color: var(--text-400); margin-bottom: 8px; }
+        .breadcrumb a { color: var(--text-500); }
+        .breadcrumb a:hover { color: var(--primary); }
+        .page-header h1 { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; }
+        .page-header p { font-size: 0.9rem; color: var(--text-500); margin-top: 4px; }
+
+        .ad-space { background: var(--ad-bg); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-400); font-size: 0.78rem; font-weight: 500; }
+        .ad-banner { height: 90px; max-width: 728px; margin: 20px auto; }
+        .ad-sidebar { height: 250px; margin-bottom: 16px; }
+        .ad-rect { height: 250px; max-width: 728px; margin: 24px auto; }
+
+        /* Calculator Card */
+        .calc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .calc-card h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-700);
+            margin-bottom: 6px;
+        }
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--text-400);
+            font-weight: 400;
+        }
+        .input-wrap {
+            position: relative;
+        }
+        .input-wrap input, .input-wrap select {
+            width: 100%;
+            height: 48px;
+            padding: 0 44px 0 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-900);
+            background: var(--bg);
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .input-wrap input:focus, .input-wrap select:focus {
+            border-color: var(--primary);
+            background: #fff;
+        }
+        .input-wrap .unit {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-400);
+            pointer-events: none;
+        }
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 480px) { .input-row { grid-template-columns: 1fr; } }
+
+        .quick-btns {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        .quick-btn {
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-500);
+            cursor: pointer;
+            transition: all 0.12s;
+        }
+        .quick-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+        .radio-group {
+            display: flex;
+            gap: 8px;
+        }
+        .radio-item {
+            flex: 1;
+            position: relative;
+        }
+        .radio-item input { display: none; }
+        .radio-item label {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .radio-item input:checked + label {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .btn-calc {
+            width: 100%;
+            height: 52px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.15s;
+            margin-top: 8px;
+        }
+        .btn-calc:hover { background: var(--primary-dark); }
+        .btn-calc:active { transform: scale(0.99); }
+
+        /* Result */
+        .result-card {
+            background: var(--surface);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .result-card.show { display: block; }
+        .result-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 20px;
+        }
+        .result-header .label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-500);
+            margin-bottom: 4px;
+        }
+        .result-header .amount {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+        }
+        .result-header .sub {
+            font-size: 0.85rem;
+            color: var(--text-500);
+            margin-top: 4px;
+        }
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .result-table tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .result-table tr:last-child { border: none; }
+        .result-table td {
+            padding: 10px 0;
+            font-size: 0.88rem;
+        }
+        .result-table td:first-child {
+            color: var(--text-500);
+            font-weight: 500;
+        }
+        .result-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+        .result-table .deduction td:last-child { color: var(--danger); }
+        .result-table .total-row td {
+            padding-top: 14px;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .sidebar { }
+        .sidebar-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .sidebar-card h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .sidebar-card a {
+            display: block;
+            padding: 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-700);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .sidebar-card a:last-child { border: none; }
+        .sidebar-card a:hover { color: var(--primary); }
+
+        .seo-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            margin: 24px 0;
+        }
+        .seo-section h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; }
+        .seo-section h3 { font-size: 0.95rem; font-weight: 700; margin: 16px 0 8px; }
+        .seo-section p { font-size: 0.88rem; color: var(--text-500); line-height: 1.8; margin-bottom: 10px; }
+
+        footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0; text-align: center; }
+        footer p { font-size: 0.78rem; color: var(--text-400); margin-bottom: 4px; }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a>
+        <div class="nav-links">
+            <a href="salary.html" class="active">연봉 실수령액</a>
+            <a href="loan.html">대출 이자</a>
+            <a href="savings.html">적금/예금</a>
+            <a href="rent.html">전세 vs 월세</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <a href="salary.html">💰 연봉 실수령액 계산기</a>
+    <a href="loan.html">🏦 대출 이자 계산기</a>
+    <a href="savings.html">🐷 적금/예금 이자 계산기</a>
+    <a href="rent.html">🏠 전세 vs 월세 비교</a>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <div class="breadcrumb"><a href="index.html">홈</a> &gt; 연봉 실수령액 계산기</div>
+        <h1>2026 연봉 실수령액 계산기</h1>
+        <p>4대보험과 소득세를 적용한 월 실수령액을 계산합니다.</p>
+    </div>
+
+    <div class="ad-space ad-banner">Advertisement</div>
+
+    <div class="page-layout">
+        <div class="main-content">
+            <div class="calc-card">
+                <h2>💰 연봉 정보 입력</h2>
+                <div class="form-group">
+                    <label>연봉 (세전) <span class="hint">· 퇴직금 별도 기준</span></label>
+                    <div class="input-wrap">
+                        <input type="text" id="salary" placeholder="3,000" inputmode="numeric">
+                        <span class="unit">만원</span>
+                    </div>
+                    <div class="quick-btns">
+                        <button class="quick-btn" onclick="setSalary(2500)">2,500</button>
+                        <button class="quick-btn" onclick="setSalary(3000)">3,000</button>
+                        <button class="quick-btn" onclick="setSalary(3500)">3,500</button>
+                        <button class="quick-btn" onclick="setSalary(4000)">4,000</button>
+                        <button class="quick-btn" onclick="setSalary(5000)">5,000</button>
+                        <button class="quick-btn" onclick="setSalary(6000)">6,000</button>
+                        <button class="quick-btn" onclick="setSalary(7000)">7,000</button>
+                        <button class="quick-btn" onclick="setSalary(10000)">1억</button>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="form-group">
+                        <label>부양가족 수 (본인 포함)</label>
+                        <div class="input-wrap">
+                            <select id="family">
+                                <option value="1" selected>1명 (본인만)</option>
+                                <option value="2">2명</option>
+                                <option value="3">3명</option>
+                                <option value="4">4명</option>
+                                <option value="5">5명</option>
+                                <option value="6">6명 이상</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>20세 이하 자녀 수</label>
+                        <div class="input-wrap">
+                            <select id="children">
+                                <option value="0" selected>0명</option>
+                                <option value="1">1명</option>
+                                <option value="2">2명</option>
+                                <option value="3">3명 이상</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>비과세액 (월) <span class="hint">· 식대 등, 기본 20만원</span></label>
+                    <div class="input-wrap">
+                        <input type="text" id="taxfree" value="20" inputmode="numeric">
+                        <span class="unit">만원</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>퇴직금</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="retire" id="retire_sep" value="separate" checked>
+                            <label for="retire_sep">별도</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="retire" id="retire_inc" value="include">
+                            <label for="retire_inc">포함</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-calc" onclick="calcSalary()">실수령액 계산하기</button>
+            </div>
+
+            <div class="result-card" id="resultCard">
+                <div class="result-header">
+                    <div class="label">월 실수령액</div>
+                    <div class="amount" id="resultAmount">0원</div>
+                    <div class="sub" id="resultSub"></div>
+                </div>
+                <table class="result-table">
+                    <tr><td>월 급여 (세전)</td><td id="r_gross">0원</td></tr>
+                    <tr class="deduction"><td>국민연금 (4.5%)</td><td id="r_nps">0원</td></tr>
+                    <tr class="deduction"><td>건강보험 (3.545%)</td><td id="r_health">0원</td></tr>
+                    <tr class="deduction"><td>장기요양보험 (12.95%)</td><td id="r_care">0원</td></tr>
+                    <tr class="deduction"><td>고용보험 (0.9%)</td><td id="r_employ">0원</td></tr>
+                    <tr class="deduction"><td>소득세</td><td id="r_income">0원</td></tr>
+                    <tr class="deduction"><td>지방소득세 (10%)</td><td id="r_local">0원</td></tr>
+                    <tr><td>공제 합계</td><td id="r_total_deduct" style="color:var(--danger);font-weight:800">0원</td></tr>
+                    <tr class="total-row"><td>월 실수령액</td><td id="r_net" style="color:var(--primary)">0원</td></tr>
+                </table>
+            </div>
+
+            <div class="seo-section">
+                <h2>연봉 실수령액 계산기 사용법</h2>
+                <p>연봉 실수령액은 세전 연봉에서 국민연금, 건강보험, 장기요양보험, 고용보험 등 4대보험료와 소득세, 지방소득세를 공제한 후 실제로 통장에 입금되는 금액입니다.</p>
+                <h3>2026년 4대보험 요율</h3>
+                <p>국민연금 4.5%, 건강보험 3.545%, 장기요양보험 건강보험의 12.95%, 고용보험 0.9%가 적용됩니다. 비과세액(식대 월 20만원 등)을 제외한 과세금액에서 공제됩니다.</p>
+                <h3>연봉별 실수령액 예시</h3>
+                <p>연봉 3,000만원의 월 실수령액은 약 224만원, 연봉 4,000만원은 약 292만원, 연봉 5,000만원은 약 354만원 수준입니다. (부양가족 1명, 비과세 20만원 기준, 참고용)</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="ad-space ad-sidebar">Advertisement</div>
+            <div class="sidebar-card">
+                <h3>📌 다른 계산기</h3>
+                <a href="loan.html">🏦 대출 이자 계산기</a>
+                <a href="savings.html">🐷 적금/예금 이자 계산기</a>
+                <a href="rent.html">🏠 전세 vs 월세 비교</a>
+            </div>
+            <div class="ad-space ad-sidebar">Advertisement</div>
+        </div>
+    </div>
+
+    <div class="ad-space ad-rect">Advertisement</div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 월급쟁이 계산기. 직장인을 위한 무료 금융 계산기.</p>
+        <p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
+    </div>
+</footer>
+
+<script>
+function fmt(n) { return Math.round(n).toLocaleString('ko-KR'); }
+function fmtWon(n) { return fmt(n) + '원'; }
+function parseSalary(v) { return parseInt(v.replace(/,/g, '')) || 0; }
+
+function setSalary(v) {
+    document.getElementById('salary').value = v.toLocaleString();
+}
+
+// Auto-format input
+document.getElementById('salary').addEventListener('input', function(e) {
+    let v = e.target.value.replace(/,/g, '').replace(/[^0-9]/g, '');
+    if (v) e.target.value = parseInt(v).toLocaleString();
+    else e.target.value = '';
+});
+
+// Simplified income tax table (2026 근로소득 간이세액표 근사)
+function getIncomeTax(monthlyTaxable, family, children) {
+    const annual = monthlyTaxable * 12;
+    let tax = 0;
+
+    // Simplified progressive tax
+    if (annual <= 14000000) tax = annual * 0.06;
+    else if (annual <= 50000000) tax = 840000 + (annual - 14000000) * 0.15;
+    else if (annual <= 88000000) tax = 6240000 + (annual - 50000000) * 0.24;
+    else if (annual <= 150000000) tax = 15360000 + (annual - 88000000) * 0.35;
+    else if (annual <= 300000000) tax = 37060000 + (annual - 150000000) * 0.38;
+    else if (annual <= 500000000) tax = 94060000 + (annual - 300000000) * 0.40;
+    else if (annual <= 1000000000) tax = 174060000 + (annual - 500000000) * 0.42;
+    else tax = 384060000 + (annual - 1000000000) * 0.45;
+
+    // Basic deductions (simplified)
+    const personalDeduction = family * 1500000;
+    const taxableAfterDeduction = Math.max(0, annual - personalDeduction);
+
+    // Recalculate with deduction
+    if (taxableAfterDeduction <= 14000000) tax = taxableAfterDeduction * 0.06;
+    else if (taxableAfterDeduction <= 50000000) tax = 840000 + (taxableAfterDeduction - 14000000) * 0.15;
+    else if (taxableAfterDeduction <= 88000000) tax = 6240000 + (taxableAfterDeduction - 50000000) * 0.24;
+    else if (taxableAfterDeduction <= 150000000) tax = 15360000 + (taxableAfterDeduction - 88000000) * 0.35;
+    else if (taxableAfterDeduction <= 300000000) tax = 37060000 + (taxableAfterDeduction - 150000000) * 0.38;
+    else if (taxableAfterDeduction <= 500000000) tax = 94060000 + (taxableAfterDeduction - 300000000) * 0.40;
+    else if (taxableAfterDeduction <= 1000000000) tax = 174060000 + (taxableAfterDeduction - 500000000) * 0.42;
+    else tax = 384060000 + (taxableAfterDeduction - 1000000000) * 0.45;
+
+    // Standard deduction approximation
+    let earnedDeduction = 0;
+    if (annual <= 5000000) earnedDeduction = annual * 0.7;
+    else if (annual <= 15000000) earnedDeduction = 3500000 + (annual - 5000000) * 0.4;
+    else if (annual <= 45000000) earnedDeduction = 7500000 + (annual - 15000000) * 0.15;
+    else if (annual <= 100000000) earnedDeduction = 12000000 + (annual - 45000000) * 0.05;
+    else earnedDeduction = 14750000 + (annual - 100000000) * 0.02;
+
+    tax = Math.max(0, tax * 0.55); // Simplified effective rate adjustment
+
+    // Child tax credit
+    if (children >= 1) tax = Math.max(0, tax - children * 150000);
+
+    return Math.max(0, Math.round(tax / 12));
+}
+
+function calcSalary() {
+    const salaryManwon = parseSalary(document.getElementById('salary').value);
+    if (!salaryManwon) return alert('연봉을 입력해주세요.');
+
+    const family = parseInt(document.getElementById('family').value);
+    const children = parseInt(document.getElementById('children').value);
+    const taxfreeManwon = parseSalary(document.getElementById('taxfree').value);
+    const retireType = document.querySelector('input[name="retire"]:checked').value;
+
+    let annualSalary = salaryManwon * 10000;
+    if (retireType === 'include') {
+        annualSalary = annualSalary / 1.0833; // 퇴직금 포함시 12/13
+    }
+
+    const monthlyGross = annualSalary / 12;
+    const monthlyTaxFree = taxfreeManwon * 10000;
+    const monthlyTaxable = Math.max(0, monthlyGross - monthlyTaxFree);
+
+    // 4대보험
+    const nps = Math.round(monthlyTaxable * 0.045);   // 국민연금 상한 590,490원
+    const npsActual = Math.min(nps, 590490);
+    const health = Math.round(monthlyTaxable * 0.03545);
+    const care = Math.round(health * 0.1295);
+    const employ = Math.round(monthlyTaxable * 0.009);
+
+    // 소득세
+    const incomeTax = getIncomeTax(monthlyTaxable, family, children);
+    const localTax = Math.round(incomeTax * 0.1);
+
+    const totalDeduction = npsActual + health + care + employ + incomeTax + localTax;
+    const netPay = monthlyGross - totalDeduction;
+
+    // Display
+    document.getElementById('r_gross').textContent = fmtWon(monthlyGross);
+    document.getElementById('r_nps').textContent = '-' + fmtWon(npsActual);
+    document.getElementById('r_health').textContent = '-' + fmtWon(health);
+    document.getElementById('r_care').textContent = '-' + fmtWon(care);
+    document.getElementById('r_employ').textContent = '-' + fmtWon(employ);
+    document.getElementById('r_income').textContent = '-' + fmtWon(incomeTax);
+    document.getElementById('r_local').textContent = '-' + fmtWon(localTax);
+    document.getElementById('r_total_deduct').textContent = '-' + fmtWon(totalDeduction);
+    document.getElementById('r_net').textContent = fmtWon(netPay);
+
+    document.getElementById('resultAmount').textContent = fmtWon(netPay);
+    document.getElementById('resultSub').textContent =
+        '연봉 ' + fmt(salaryManwon) + '만원 기준 · 공제 합계 월 ' + fmtWon(totalDeduction);
+
+    document.getElementById('resultCard').classList.add('show');
+    document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+</body>
+</html>
