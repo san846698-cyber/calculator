@@ -33,7 +33,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"적금과 예금의 차이는?","acceptedAnswer":{"@type":"Answer","text":"적금은 매월 일정 금액을 넣고 만기에 원금+이자를 받는 상품이고, 예금은 목돈을 한 번에 맡기고 만기에 이자를 받는 상품입니다. 같은 금리라면 예금의 이자가 약 2배 높습니다."}},{"@type":"Question","name":"단리와 복리 중 어떤 게 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"복리가 유리합니다. 복리는 이자에 이자가 붙는 방식이라 기간이 길수록 차이가 커집니다. 다만 시중 적금은 대부분 단리이며, 복리 상품은 주로 예금에서 찾을 수 있습니다."}},{"@type":"Question","name":"이자소득세는 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"이자소득에는 15.4%(소득세 14% + 지방소득세 1.4%)의 세금이 원천징수됩니다. 비과세 상품이나 세금우대(9.5%) 상품을 활용하면 세후 수익을 높일 수 있습니다."}},{"@type":"Question","name":"적금 중도해지하면 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"중도해지 시 약정 금리 대신 중도해지 금리(보통 약정 금리의 50~70%)가 적용됩니다. 가능하면 만기까지 유지하는 것이 유리합니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html" class="active">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -154,7 +166,13 @@
                 <h3>적금 vs 예금 선택 가이드</h3>
                 <p>목돈이 있다면 예금이, 매월 저축하고 싶다면 적금이 적합합니다. 다만 적금은 매월 납입하는 특성상 실제 평균 예치 기간이 예금의 절반 수준이므로, 같은 금리라면 예금의 이자가 약 2배 높다는 점을 유의하세요.</p>
             </div>
-        </div>
+        <div class="faq-section"><h2>❓ 적금/예금 이자 자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">적금과 예금의 차이는?<span class="icon">+</span></div><div class="faq-a">적금은 매월 일정 금액을 넣고 만기에 원금+이자를 받는 상품이고, 예금은 목돈을 한 번에 맡기고 만기에 이자를 받는 상품입니다. 같은 금리라면 예금의 이자가 약 2배 높습니다.</div></div>
+<div class="faq-item"><div class="faq-q">단리와 복리 중 어떤 게 유리한가요?<span class="icon">+</span></div><div class="faq-a">복리가 유리합니다. 복리는 이자에 이자가 붙는 방식이라 기간이 길수록 차이가 커집니다. 다만 시중 적금은 대부분 단리이며, 복리 상품은 주로 예금에서 찾을 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">이자소득세는 얼마인가요?<span class="icon">+</span></div><div class="faq-a">이자소득에는 15.4%(소득세 14% + 지방소득세 1.4%)의 세금이 원천징수됩니다. 비과세 상품이나 세금우대(9.5%) 상품을 활용하면 세후 수익을 높일 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">적금 중도해지하면 어떻게 되나요?<span class="icon">+</span></div><div class="faq-a">중도해지 시 약정 금리 대신 중도해지 금리(보통 약정 금리의 50~70%)가 적용됩니다. 가능하면 만기까지 유지하는 것이 유리합니다.</div></div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -277,6 +295,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

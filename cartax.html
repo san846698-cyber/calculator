@@ -32,7 +32,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"중고차도 취등록세를 내나요?","acceptedAnswer":{"@type":"Answer","text":"네, 중고차 구매 시에도 취득세를 납부해야 합니다. 과세 기준은 실거래가와 시가표준액 중 높은 금액입니다."}},{"@type":"Question","name":"전기차 취등록세 감면은?","acceptedAnswer":{"@type":"Answer","text":"전기차는 취득세 최대 140만원, 하이브리드는 최대 40만원 감면됩니다. 감면 혜택은 정부 정책에 따라 변경될 수 있습니다."}},{"@type":"Question","name":"경차 혜택은?","acceptedAnswer":{"@type":"Answer","text":"배기량 1,000cc 이하 경차는 취득세 75만원까지 면제됩니다. 그 외 유류세 환급, 고속도로 통행료 50% 할인 등의 혜택도 있습니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -137,7 +149,12 @@
                 <h3>전기차·하이브리드 감면</h3>
                 <p>전기차는 취득세 최대 140만원 감면, 하이브리드는 최대 40만원 감면 혜택이 있습니다. 다자녀(3자녀 이상) 가구는 취득세 면제 또는 감면 혜택이 추가됩니다.</p>
             </div>
-        </div>
+        <div class="faq-section"><h2>❓ 자동차 취등록세 자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">중고차도 취등록세를 내나요?<span class="icon">+</span></div><div class="faq-a">네, 중고차 구매 시에도 취득세를 납부해야 합니다. 과세 기준은 실거래가와 시가표준액 중 높은 금액입니다.</div></div>
+<div class="faq-item"><div class="faq-q">전기차 취등록세 감면은?<span class="icon">+</span></div><div class="faq-a">전기차는 취득세 최대 140만원, 하이브리드는 최대 40만원 감면됩니다. 감면 혜택은 정부 정책에 따라 변경될 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">경차 혜택은?<span class="icon">+</span></div><div class="faq-a">배기량 1,000cc 이하 경차는 취득세 75만원까지 면제됩니다. 그 외 유류세 환급, 고속도로 통행료 50% 할인 등의 혜택도 있습니다.</div></div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -229,6 +246,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

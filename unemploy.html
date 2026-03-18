@@ -36,7 +36,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"자발적 퇴사도 실업급여를 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"원칙적으로 불가하지만, 정당한 사유(임금체불, 직장 내 괴롭힘, 통근 곤란, 건강 악화 등)가 있으면 자발적 퇴사도 수급 가능합니다."}},{"@type":"Question","name":"실업급여는 얼마나 받나요?","acceptedAnswer":{"@type":"Answer","text":"퇴직 전 3개월 평균임금의 60%를 지급받으며, 2026년 기준 하한액은 일 63,104원, 상한액은 일 66,000원입니다."}},{"@type":"Question","name":"실업급여 받으면서 알바해도 되나요?","acceptedAnswer":{"@type":"Answer","text":"주 15시간 미만, 월 60시간 미만의 단기 취업은 가능하지만 반드시 고용센터에 신고해야 합니다. 미신고 시 부정수급으로 처벌받을 수 있습니다."}},{"@type":"Question","name":"실업급여 신청 절차는?","acceptedAnswer":{"@type":"Answer","text":"퇴사 후 워크넷에서 구직등록 → 거주지 관할 고용센터 방문 → 수급자격 인정 신청 → 실업인정(2~4주마다) → 급여 지급 순서입니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -147,7 +159,13 @@
                 <h3>실업급여 지급 기간</h3>
                 <p>연령과 고용보험 가입기간에 따라 120일~270일간 지급됩니다. 50세 미만은 최대 240일, 50세 이상 또는 장애인은 최대 270일입니다. 재취업이 빠를수록 조기재취업수당(잔여 급여의 50%)을 받을 수 있어 적극적인 구직활동이 권장됩니다.</p>
             </div>
-        </div>
+        <div class="faq-section"><h2>❓ 실업급여 자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">자발적 퇴사도 실업급여를 받을 수 있나요?<span class="icon">+</span></div><div class="faq-a">원칙적으로 불가하지만, 정당한 사유(임금체불, 직장 내 괴롭힘, 통근 곤란, 건강 악화 등)가 있으면 자발적 퇴사도 수급 가능합니다.</div></div>
+<div class="faq-item"><div class="faq-q">실업급여는 얼마나 받나요?<span class="icon">+</span></div><div class="faq-a">퇴직 전 3개월 평균임금의 60%를 지급받으며, 2026년 기준 하한액은 일 63,104원, 상한액은 일 66,000원입니다.</div></div>
+<div class="faq-item"><div class="faq-q">실업급여 받으면서 알바해도 되나요?<span class="icon">+</span></div><div class="faq-a">주 15시간 미만, 월 60시간 미만의 단기 취업은 가능하지만 반드시 고용센터에 신고해야 합니다. 미신고 시 부정수급으로 처벌받을 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">실업급여 신청 절차는?<span class="icon">+</span></div><div class="faq-a">퇴사 후 워크넷에서 구직등록 → 거주지 관할 고용센터 방문 → 수급자격 인정 신청 → 실업인정(2~4주마다) → 급여 지급 순서입니다.</div></div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -264,6 +282,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

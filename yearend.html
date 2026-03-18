@@ -36,7 +36,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"연말정산은 언제 하나요?","acceptedAnswer":{"@type":"Answer","text":"보통 매년 1월 15일~2월 중순에 국세청 홈택스 간소화 서비스가 열리고, 회사를 통해 서류를 제출합니다. 환급금은 2~3월 급여에 포함되어 지급됩니다."}},{"@type":"Question","name":"신용카드와 체크카드 중 어떤 게 공제에 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"총급여의 25%까지는 어떤 수단이든 공제가 안 되므로 신용카드로 혜택을 받고, 25% 초과분부터는 공제율이 높은 체크카드(30%)나 현금영수증(30%)을 사용하는 것이 유리합니다."}},{"@type":"Question","name":"맞벌이 부부는 어떻게 하면 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"소득이 높은 쪽에서 소득공제(신용카드 등)를, 소득이 낮은 쪽에서 세액공제(의료비, 교육비 등)를 받는 것이 일반적으로 유리합니다. 부양가족 공제도 전략적으로 배분하세요."}},{"@type":"Question","name":"월세 세액공제 받으려면?","acceptedAnswer":{"@type":"Answer","text":"총급여 8,000만원 이하, 무주택 세대주, 기준시가 4억원 이하 주택, 전입신고 필수입니다. 총급여 5,500만원 이하면 17%, 초과면 15% 공제율이 적용됩니다."}},{"@type":"Question","name":"기부금도 공제받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네, 법정기부금은 전액, 지정기부금은 소득의 30% 한도 내에서 15%(1,000만원 초과분 30%) 세액공제를 받을 수 있습니다. 종교단체 기부금은 소득의 10% 한도입니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -170,7 +182,30 @@
                 <h3>환급을 많이 받으려면?</h3>
                 <p>연금저축/IRP에 연 최대 900만원까지 납입하면 최대 148.5만원의 세액공제를 받을 수 있습니다. 체크카드/현금영수증 사용 비율을 높이면 신용카드보다 공제율이 높습니다 (30% vs 15%).</p>
             </div>
-        </div>
+        <div class="faq-section">
+<h2>❓ 연말정산 자주 묻는 질문</h2>
+<div class="faq-item">
+<div class="faq-q">연말정산은 언제 하나요?<span class="icon">+</span></div>
+<div class="faq-a">보통 매년 1월 15일~2월 중순에 국세청 홈택스 간소화 서비스가 열리고, 회사를 통해 서류를 제출합니다. 환급금은 2~3월 급여에 포함되어 지급됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">신용카드와 체크카드 중 어떤 게 공제에 유리한가요?<span class="icon">+</span></div>
+<div class="faq-a">총급여의 25%까지는 어떤 수단이든 공제가 안 되므로 신용카드로 혜택을 받고, 25% 초과분부터는 공제율이 높은 체크카드(30%)나 현금영수증(30%)을 사용하는 것이 유리합니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">맞벌이 부부는 어떻게 하면 유리한가요?<span class="icon">+</span></div>
+<div class="faq-a">소득이 높은 쪽에서 소득공제(신용카드 등)를, 소득이 낮은 쪽에서 세액공제(의료비, 교육비 등)를 받는 것이 일반적으로 유리합니다. 부양가족 공제도 전략적으로 배분하세요.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">월세 세액공제 받으려면?<span class="icon">+</span></div>
+<div class="faq-a">총급여 8,000만원 이하, 무주택 세대주, 기준시가 4억원 이하 주택, 전입신고 필수입니다. 총급여 5,500만원 이하면 17%, 초과면 15% 공제율이 적용됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">기부금도 공제받을 수 있나요?<span class="icon">+</span></div>
+<div class="faq-a">네, 법정기부금은 전액, 지정기부금은 소득의 30% 한도 내에서 15%(1,000만원 초과분 30%) 세액공제를 받을 수 있습니다. 종교단체 기부금은 소득의 10% 한도입니다.</div>
+</div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -366,6 +401,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

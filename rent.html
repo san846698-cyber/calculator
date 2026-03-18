@@ -51,7 +51,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"전세와 월세 중 어떤 게 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"전세보증금의 투자 수익률이 월세보다 높으면 전세가 유리하고, 반대면 월세가 유리합니다. 또한 전세자금대출 금리, 월세 세액공제 등도 고려해야 합니다."}},{"@type":"Question","name":"전세보증보험이란?","acceptedAnswer":{"@type":"Answer","text":"임대인이 보증금을 돌려주지 못할 때 보증기관(HUG, SGI)이 대신 지급해주는 보험입니다. 전세 계약 시 반드시 가입을 권장하며, 보험료는 보증금의 0.1~0.3% 수준입니다."}},{"@type":"Question","name":"월세 세액공제는 어떻게 받나요?","acceptedAnswer":{"@type":"Answer","text":"총급여 8,000만원 이하 무주택 세대주가 기준시가 4억원 이하 주택에 전입신고 후 거주하면 연말정산 시 월세의 15~17%를 세액공제 받을 수 있습니다."}},{"@type":"Question","name":"전월세 전환율이란?","acceptedAnswer":{"@type":"Answer","text":"전세를 월세로 변환할 때 적용하는 비율입니다. 법정 상한은 기준금리 + 2%p이며, 이를 초과하는 전환율은 위법입니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html" class="active">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -188,7 +200,13 @@
                 <h3>전월세 전환율</h3>
                 <p>전세를 월세로 전환할 때 적용하는 비율을 전월세 전환율이라 합니다. 2026년 기준 법정 전환율 상한은 기준금리(연 3.5%) + 2%p = 5.5%입니다. 예를 들어 전세보증금 3억에서 보증금 1억 + 월세로 전환 시 월세는 약 91만원(2억 × 5.5% ÷ 12)이 됩니다.</p>
             </div>
-        </div>
+        <div class="faq-section"><h2>❓ 전세/월세 자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">전세와 월세 중 어떤 게 유리한가요?<span class="icon">+</span></div><div class="faq-a">전세보증금의 투자 수익률이 월세보다 높으면 전세가 유리하고, 반대면 월세가 유리합니다. 또한 전세자금대출 금리, 월세 세액공제 등도 고려해야 합니다.</div></div>
+<div class="faq-item"><div class="faq-q">전세보증보험이란?<span class="icon">+</span></div><div class="faq-a">임대인이 보증금을 돌려주지 못할 때 보증기관(HUG, SGI)이 대신 지급해주는 보험입니다. 전세 계약 시 반드시 가입을 권장하며, 보험료는 보증금의 0.1~0.3% 수준입니다.</div></div>
+<div class="faq-item"><div class="faq-q">월세 세액공제는 어떻게 받나요?<span class="icon">+</span></div><div class="faq-a">총급여 8,000만원 이하 무주택 세대주가 기준시가 4억원 이하 주택에 전입신고 후 거주하면 연말정산 시 월세의 15~17%를 세액공제 받을 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">전월세 전환율이란?<span class="icon">+</span></div><div class="faq-a">전세를 월세로 변환할 때 적용하는 비율입니다. 법정 상한은 기준금리 + 2%p이며, 이를 초과하는 전환율은 위법입니다.</div></div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -297,6 +315,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

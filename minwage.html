@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 최저시급 월급 계산기 - 직장인 계산기</title>
+<link rel="canonical" href="https://san846698-cyber.github.io/calculator/minwage.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="최저시급 월급·연봉 계산기">
+<meta property="og:description" content="2026년 최저시급 기준 월급과 연봉을 계산하세요">
+<meta property="og:url" content="https://san846698-cyber.github.io/calculator/minwage.html">
+<meta property="og:site_name" content="직장인 계산기">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="최저시급 월급·연봉 계산기">
+<meta name="twitter:description" content="2026년 최저시급 기준 월급과 연봉을 계산하세요">
+<meta name="description" content="2026년 최저시급 월급 계산기. 주휴수당 포함 월 환산액과 연봉을 즉시 계산합니다. 파트타임, 알바 급여 계산.">
+<meta name="keywords" content="최저시급 계산기, 2026 최저임금, 월급 계산기, 주휴수당, 알바 급여">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F0FAF6;--surface:#FFF;--primary:#0D9668;--primary-light:#ECFDF5;--primary-dark:#047857;--text-900:#111827;--text-700:#374151;--text-500:#6B7280;--text-400:#9CA3AF;--border:#E5E7EB;--border-light:#F3F4F6;--success:#059669;--danger:#DC2626;--ad-bg:#E5E7EB;--shadow:0 1px 3px rgba(0,0,0,0.06);--shadow-md:0 4px 6px rgba(0,0,0,0.05);--radius:12px;--radius-lg:16px}
+html{font-size:16px}body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text-900);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.top-nav{background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(209,213,219,0.5);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:1.15rem;font-weight:800;color:var(--primary);display:flex;align-items:center;gap:8px}
+.nav-logo .icon{width:28px;height:28px;background:linear-gradient(135deg,#10B981,#047857);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:900}
+.nav-links{display:flex;gap:4px}.nav-links a{padding:6px 12px;font-size:.85rem;font-weight:500;color:var(--text-500);border-radius:8px;transition:all .15s}.nav-links a:hover{color:var(--primary);background:var(--primary-light)}
+@media(max-width:640px){.nav-links{display:none}}.mobile-menu-btn{display:none;background:none;border:none;padding:8px;cursor:pointer;color:var(--text-700)}@media(max-width:640px){.mobile-menu-btn{display:block}}
+.mobile-nav{display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 20px 16px}.mobile-nav.open{display:block}.mobile-nav a{display:block;padding:10px 12px;font-size:.9rem;font-weight:500;color:var(--text-700);border-radius:8px}
+.container{max-width:1080px;margin:0 auto;padding:0 20px}
+.page-layout{display:grid;grid-template-columns:1fr 300px;gap:24px;margin:32px 0}@media(max-width:860px){.page-layout{grid-template-columns:1fr}}
+.page-header{margin:32px 0 8px}.breadcrumb{font-size:.8rem;color:var(--text-400);margin-bottom:8px}.breadcrumb a{color:var(--text-500)}.page-header h1{font-size:1.6rem;font-weight:900;letter-spacing:-.02em}.page-header p{font-size:.9rem;color:var(--text-500);margin-top:4px}
+.ad-space{background:var(--ad-bg);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--text-400);font-size:.78rem;font-weight:500}.ad-banner{height:90px;max-width:728px;margin:20px auto}.ad-sidebar{height:250px;margin-bottom:16px}.ad-rect{height:250px;max-width:728px;margin:24px auto}
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;box-shadow:var(--shadow)}
+.calc-card h2{font-size:1rem;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.form-group{margin-bottom:16px}.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--text-700);margin-bottom:6px}.form-group .hint{font-size:.75rem;color:var(--text-400);font-weight:400}
+.input-wrap{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}.input-wrap:focus-within{border-color:var(--primary)}
+.input-wrap input,.input-wrap select{flex:1;padding:12px 14px;border:none;outline:none;font-size:.95rem;font-family:inherit;background:transparent}.input-wrap .unit{padding:0 14px;font-size:.85rem;color:var(--text-500);font-weight:500;white-space:nowrap}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:480px){.input-row{grid-template-columns:1fr}}
+.btn-calc{width:100%;padding:14px;background:linear-gradient(135deg,#10B981,#047857);color:#fff;border:none;border-radius:var(--radius);font-size:.95rem;font-weight:700;cursor:pointer;margin-top:8px;transition:opacity .2s}.btn-calc:hover{opacity:.9}
+.result-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px;display:none;box-shadow:var(--shadow-md)}.result-card.show{display:block}
+.result-header{text-align:center;padding-bottom:20px;border-bottom:1px solid var(--border);margin-bottom:16px}.result-header .label{font-size:.85rem;color:var(--text-500);margin-bottom:4px}.result-header .amount{font-family:'Outfit','Noto Sans KR',sans-serif;font-size:2rem;font-weight:900;color:var(--primary)}.result-header .sub{font-size:.8rem;color:var(--text-400);margin-top:4px}
+.result-table{width:100%;border-collapse:collapse}.result-table td{padding:10px 0;font-size:.88rem;border-bottom:1px solid var(--border-light)}.result-table td:last-child{text-align:right;font-weight:600}.result-table tr.highlight td{color:var(--primary);font-weight:700}.result-table tr.total-row td{border-top:2px solid var(--border);font-weight:800;font-size:.95rem;padding-top:14px}
+.sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border-bottom:none}.sidebar-card a:hover{color:var(--primary)}
+.seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}.seo-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px;color:var(--text-900)}.seo-section h3{font-size:.95rem;font-weight:700;margin:20px 0 8px;color:var(--primary)}.seo-section p{font-size:.88rem;color:var(--text-700);margin-bottom:10px;line-height:1.7}
+.quick-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.quick-btn{padding:6px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .15s}.quick-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"2026년 최저시급은 얼마인가요?","acceptedAnswer":{"@type":"Answer","text":"2026년 최저시급은 시간당 10,030원입니다. 주 40시간 근무 시 주휴수당 포함 월 환산액은 약 2,096,270원입니다."}},{"@type":"Question","name":"수습 기간에도 최저시급이 적용되나요?","acceptedAnswer":{"@type":"Answer","text":"1년 이상 근로계약 체결 시 최초 3개월은 최저임금의 90%까지 감액 가능합니다. 단순노무직은 수습 감액이 불가합니다."}},{"@type":"Question","name":"최저시급 위반 시 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"고용노동부(1350)에 신고하면 됩니다. 최저임금 위반 시 사업주에게 3년 이하 징역 또는 2,000만원 이하 벌금이 부과됩니다."}}]}</script>
+</head>
+<body>
+<nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="index.html">홈</a><a href="salary.html">연봉</a><a href="loan.html">대출</a><a href="yearend.html">연말정산</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
+<div class="mobile-nav" id="mobileNav">
+<a href="index.html">🏠 홈</a><a href="salary.html">💰 연봉 실수령액</a><a href="loan.html">🏦 대출 이자</a><a href="savings.html">🐷 적금/예금</a><a href="rent.html">🏠 전세 vs 월세</a><a href="retire.html">📋 퇴직금</a><a href="unemploy.html">📊 실업급여</a><a href="weekly.html">⏰ 주휴수당</a><a href="yearend.html">🧾 연말정산</a><a href="broker.html">🏢 중개수수료</a><a href="incometax.html">📈 종합소득세</a><a href="overtime.html">⏱️ 시간외근무</a><a href="insurance.html">🏥 4대보험</a><a href="annualleave.html">📅 연차</a><a href="cartax.html">🚗 취등록세</a><a href="capitalgain.html">🏠 양도소득세</a><a href="rentcredit.html">💸 월세 세액공제</a><a href="regular.html">📊 통상임금</a><a href="bmi.html">🏃 BMI</a>
+</div>
+<div class="container">
+<div class="page-header">
+<div class="breadcrumb"><a href="index.html">홈</a> &gt; 최저시급 월급·연봉 계산기</div>
+<h1>최저시급 월급·연봉 계산기</h1>
+<p>2026년 최저시급 기준 월급과 연봉을 계산하세요</p>
+</div>
+<div class="ad-space ad-banner">Advertisement</div>
+<div class="page-layout">
+<div class="main-content">
+<div class="calc-card">
+<h2>💰 최저시급 월급/연봉 계산</h2>
+<div class="form-group">
+<label>기준 연도</label>
+<div class="input-wrap"><select id="yearSelect"><option value="10030">2025년 (10,030원)</option><option value="10030" selected>2026년 (10,030원)</option></select></div>
+</div>
+<div class="form-group">
+<label>주 근로시간</label>
+<div class="input-wrap"><input type="number" id="weekHours" value="40" min="1" max="52"><span class="unit">시간</span></div>
+<div class="quick-btns"><button class="quick-btn" onclick="document.getElementById('weekHours').value=15">15시간</button><button class="quick-btn" onclick="document.getElementById('weekHours').value=20">20시간</button><button class="quick-btn" onclick="document.getElementById('weekHours').value=30">30시간</button><button class="quick-btn" onclick="document.getElementById('weekHours').value=40">40시간</button></div>
+</div>
+<button class="btn-calc" onclick="calcMinWage()">월급/연봉 계산하기</button>
+</div>
+<div class="result-card" id="resultCard">
+<div class="result-header"><div class="label">예상 월 급여</div><div class="amount" id="resultAmount">0원</div><div class="sub" id="resultSub"></div></div>
+<table class="result-table">
+<tr><td>최저시급</td><td id="r_hourly">0원</td></tr>
+<tr><td>주 근로시간</td><td id="r_weekhrs">0시간</td></tr>
+<tr><td>주휴시간</td><td id="r_weekrest">0시간</td></tr>
+<tr><td>월 근로시간</td><td id="r_monthhrs">0시간</td></tr>
+<tr class="highlight"><td>예상 월 급여</td><td id="r_monthly">0원</td></tr>
+<tr class="total-row"><td>예상 연봉 (12개월)</td><td id="r_annual" style="color:var(--primary)">0원</td></tr>
+</table>
+<div class="share-btns" id="shareBtns" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);gap:8px;flex-wrap:wrap">
+<button onclick="saveAsImage()" style="flex:1;min-width:140px;padding:10px 16px;background:#059669;color:#fff;border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">📷 이미지로 저장</button>
+<button onclick="copyResult()" style="flex:1;min-width:140px;padding:10px 16px;background:var(--primary-light);color:var(--primary);border:none;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer">📋 결과 복사</button>
+</div>
+</div>
+<div class="seo-section">
+<h2>2026년 최저시급 월급·연봉 계산 가이드</h2>
+<p>2026년 최저시급은 시간당 10,030원입니다. 주 40시간 근무 시 주휴수당을 포함한 월 환산액은 약 2,096,270원이며, 연봉으로는 약 25,155,240원입니다.</p>
+<h3>주휴수당이란?</h3>
+<p>주 15시간 이상 근무하면 1주일에 하루의 유급 휴일(주휴일)이 발생합니다. 주 40시간 근무 시 주휴시간은 8시간이며, 이를 포함한 월 소정근로시간은 209시간(주 48시간 × 4.345주)입니다. 주휴수당을 포함하면 실제 시급은 약 12,036원에 해당합니다.</p>
+<h3>파트타임 최저임금 계산</h3>
+<p>주 20시간 근무 시 주휴시간 4시간이 추가되어 월 약 104.3시간이 되며, 월급은 약 1,046,129원입니다. 주 15시간 미만은 주휴수당이 발생하지 않으므로 순수 근로시간만 적용됩니다.</p>
+</div>
+</div>
+<div class="sidebar">
+<div class="ad-space ad-sidebar">Advertisement</div>
+<div class="sidebar-card">
+<h3>📌 다른 계산기</h3>
+<a href="salary.html">💰 연봉 실수령액 계산기</a>
+<a href="loan.html">🏦 대출 이자 계산기</a>
+<a href="yearend.html">🧾 연말정산 환급액 계산기</a>
+</div>
+<div class="ad-space ad-sidebar">Advertisement</div>
+</div>
+</div>
+<div class="ad-space ad-rect">Advertisement</div>
+</div>
+<footer style="margin-top:48px;padding:32px 0;border-top:1px solid #D1D5DB;background:#F8FAFB">
+<div style="max-width:1080px;margin:0 auto;padding:0 20px;text-align:center">
+<p style="font-size:.95rem;font-weight:700;color:#064E3B;margin-bottom:12px">직장인 계산기</p>
+<p style="font-size:.82rem;color:#6B7280;margin-bottom:8px">
+<a href="about.html" style="color:#0D9668;text-decoration:none;font-weight:500">서비스 소개</a><span style="margin:0 8px;color:#D1D5DB">|</span>
+<a href="privacy.html" style="color:#0D9668;text-decoration:none;font-weight:500">개인정보처리방침</a><span style="margin:0 8px;color:#D1D5DB">|</span>
+<a href="contact.html" style="color:#0D9668;text-decoration:none;font-weight:500">문의하기</a></p>
+<p style="font-size:.75rem;color:#9CA3AF;margin-top:8px">© 2026 직장인 계산기. 본 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
+</div>
+</footer>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
+function calcMinWage(){
+    const hourly=parseInt(document.getElementById('yearSelect').value);
+    const weekHrs=parseFloat(document.getElementById('weekHours').value)||0;
+    if(!weekHrs)return alert('주 근로시간을 입력해주세요.');
+    const weekRest=weekHrs>=15?(weekHrs/40)*8:0;
+    const weekTotal=weekHrs+weekRest;
+    const monthHrs=weekTotal*(365/7/12);
+    const monthly=Math.round(hourly*monthHrs);
+    const annual=monthly*12;
+    document.getElementById('r_hourly').textContent=fmt(hourly)+'원';
+    document.getElementById('r_weekhrs').textContent=weekHrs+'시간';
+    document.getElementById('r_weekrest').textContent=weekRest.toFixed(1)+'시간';
+    document.getElementById('r_monthhrs').textContent=Math.round(monthHrs)+'시간';
+    document.getElementById('r_monthly').textContent=fmt(monthly)+'원';
+    document.getElementById('r_annual').textContent=fmt(annual)+'원';
+    document.getElementById('resultAmount').textContent=fmt(monthly)+'원';
+    document.getElementById('resultSub').textContent='시급 '+fmt(hourly)+'원 × 월 '+Math.round(monthHrs)+'시간';
+    document.getElementById('resultCard').classList.add('show');
+    document.getElementById('shareBtns').style.display='flex';
+    document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function saveAsImage() {
+    html2canvas(document.getElementById('resultCard'), { backgroundColor: '#fff', scale: 2 }).then(c => {
+        const a = document.createElement('a'); a.download = 'minwage_계산결과.png'; a.href = c.toDataURL(); a.click();
+    });
+}
+function copyResult() {
+    const text = document.getElementById('resultCard').innerText;
+    if (navigator.clipboard) navigator.clipboard.writeText(text);
+    else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
+    alert('결과가 복사되었습니다!');
+}
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
+</script>
+</body>
+</html>

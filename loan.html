@@ -107,7 +107,19 @@
         .seo-section p { font-size: 0.88rem; color: var(--text-500); line-height: 1.8; margin-bottom: 10px; }
         footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 32px 0; text-align: center; }
         footer p { font-size: 0.78rem; color: var(--text-400); margin-bottom: 4px; }
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"원리금균등과 원금균등 중 어떤 게 유리한가요?","acceptedAnswer":{"@type":"Answer","text":"총 이자 비용만 보면 원금균등이 유리합니다. 하지만 초기 납입액이 크기 때문에, 매월 고정 금액을 납부하고 싶다면 원리금균등이 편리합니다. 상황에 맞게 선택하세요."}},{"@type":"Question","name":"중도상환수수료란?","acceptedAnswer":{"@type":"Answer","text":"대출을 만기 전에 갚을 때 부과되는 수수료입니다. 보통 대출 후 3년 이내에 상환하면 잔여 원금의 1~1.5%가 부과됩니다. 3년 경과 후에는 대부분 면제됩니다."}},{"@type":"Question","name":"고정금리와 변동금리 중 뭘 선택해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"금리 인상이 예상되면 고정금리가, 금리 인하가 예상되면 변동금리가 유리합니다. 확실하지 않다면 혼합형(초기 고정 후 변동)도 고려해보세요."}},{"@type":"Question","name":"DSR이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"DSR(총부채원리금상환비율)은 연소득 대비 모든 대출의 연간 원리금 상환액 비율입니다. 2026년 기준 DSR 40% 규제가 적용되어, 소득의 40%를 넘는 대출은 받기 어렵습니다."}},{"@type":"Question","name":"대출 이자를 줄이는 방법은?","acceptedAnswer":{"@type":"Answer","text":"급여이체, 카드 실적, 자동이체 설정 등으로 우대금리(0.1~0.5%p)를 받을 수 있습니다. 또한 대출 비교 플랫폼에서 여러 은행의 금리를 비교한 후 가장 낮은 곳을 선택하세요."}}]}</script>
 </head>
 <body>
 
@@ -264,7 +276,30 @@
                 <h3>대출 시 확인해야 할 사항</h3>
                 <p>대출을 받기 전에는 금리 외에도 중도상환수수료(보통 대출 후 3년 이내 상환 시 잔여원금의 1~1.5% 부과), 대출 한도(DTI·DSR 규제에 따른 소득 대비 한도), 인지세(5천만원 초과 시 발생), 보증료 등 부대비용을 반드시 확인해야 합니다. 또한 금리 우대 조건(급여이체, 카드 실적 등)을 활용하면 0.1~0.5%p 금리 인하가 가능합니다.</p>
             </div>
-        </div>
+        <div class="faq-section">
+<h2>❓ 대출 이자 자주 묻는 질문</h2>
+<div class="faq-item">
+<div class="faq-q">원리금균등과 원금균등 중 어떤 게 유리한가요?<span class="icon">+</span></div>
+<div class="faq-a">총 이자 비용만 보면 원금균등이 유리합니다. 하지만 초기 납입액이 크기 때문에, 매월 고정 금액을 납부하고 싶다면 원리금균등이 편리합니다. 상황에 맞게 선택하세요.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">중도상환수수료란?<span class="icon">+</span></div>
+<div class="faq-a">대출을 만기 전에 갚을 때 부과되는 수수료입니다. 보통 대출 후 3년 이내에 상환하면 잔여 원금의 1~1.5%가 부과됩니다. 3년 경과 후에는 대부분 면제됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">고정금리와 변동금리 중 뭘 선택해야 하나요?<span class="icon">+</span></div>
+<div class="faq-a">금리 인상이 예상되면 고정금리가, 금리 인하가 예상되면 변동금리가 유리합니다. 확실하지 않다면 혼합형(초기 고정 후 변동)도 고려해보세요.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">DSR이 뭔가요?<span class="icon">+</span></div>
+<div class="faq-a">DSR(총부채원리금상환비율)은 연소득 대비 모든 대출의 연간 원리금 상환액 비율입니다. 2026년 기준 DSR 40% 규제가 적용되어, 소득의 40%를 넘는 대출은 받기 어렵습니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">대출 이자를 줄이는 방법은?<span class="icon">+</span></div>
+<div class="faq-a">급여이체, 카드 실적, 자동이체 설정 등으로 우대금리(0.1~0.5%p)를 받을 수 있습니다. 또한 대출 비교 플랫폼에서 여러 은행의 금리를 비교한 후 가장 낮은 곳을 선택하세요.</div>
+</div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -432,6 +467,15 @@ function copyResult() {
     if (navigator.clipboard) navigator.clipboard.writeText(t); else { const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 
 </body>

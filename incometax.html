@@ -32,7 +32,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"종합소득세는 누가 내나요?","acceptedAnswer":{"@type":"Answer","text":"근로소득 외에 사업소득, 프리랜서 소득, 임대소득, 이자·배당소득(2,000만원 초과) 등이 있는 사람이 신고·납부합니다. 근로소득만 있으면 연말정산으로 대체됩니다."}},{"@type":"Question","name":"종합소득세 신고 기간은?","acceptedAnswer":{"@type":"Answer","text":"매년 5월 1일~31일에 전년도 소득을 신고합니다. 성실신고확인대상자는 6월 30일까지 연장됩니다."}},{"@type":"Question","name":"경비 처리는 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"단순경비율(소규모 사업자) 또는 기준경비율(일정 규모 이상)을 적용하거나, 장부를 직접 작성하여 실제 경비를 공제받을 수 있습니다. 장부 작성 시 더 많은 경비를 인정받을 수 있습니다."}},{"@type":"Question","name":"프리랜서 3.3% 원천징수란?","acceptedAnswer":{"@type":"Answer","text":"프리랜서 소득에서 3.3%(소득세 3% + 지방소득세 0.3%)를 미리 떼는 것입니다. 5월 종합소득세 신고 시 실제 세금과 비교하여 추가 납부하거나 환급받습니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -130,7 +142,13 @@
                 <h3>프리랜서·사업자를 위한 절세 팁</h3>
                 <p>필요경비를 최대한 인정받기 위해 사업 관련 지출 증빙을 철저히 관리하세요. 노란우산공제(연 최대 500만원 소득공제), 연금저축·IRP(연 최대 900만원 세액공제), 성실신고확인 대상자의 의료비·교육비 공제 등을 활용하면 세 부담을 크게 줄일 수 있습니다.</p>
             </div>
-        </div>
+        <div class="faq-section"><h2>❓ 종합소득세 자주 묻는 질문</h2>
+<div class="faq-item"><div class="faq-q">종합소득세는 누가 내나요?<span class="icon">+</span></div><div class="faq-a">근로소득 외에 사업소득, 프리랜서 소득, 임대소득, 이자·배당소득(2,000만원 초과) 등이 있는 사람이 신고·납부합니다. 근로소득만 있으면 연말정산으로 대체됩니다.</div></div>
+<div class="faq-item"><div class="faq-q">종합소득세 신고 기간은?<span class="icon">+</span></div><div class="faq-a">매년 5월 1일~31일에 전년도 소득을 신고합니다. 성실신고확인대상자는 6월 30일까지 연장됩니다.</div></div>
+<div class="faq-item"><div class="faq-q">경비 처리는 어떻게 하나요?<span class="icon">+</span></div><div class="faq-a">단순경비율(소규모 사업자) 또는 기준경비율(일정 규모 이상)을 적용하거나, 장부를 직접 작성하여 실제 경비를 공제받을 수 있습니다. 장부 작성 시 더 많은 경비를 인정받을 수 있습니다.</div></div>
+<div class="faq-item"><div class="faq-q">프리랜서 3.3% 원천징수란?<span class="icon">+</span></div><div class="faq-a">프리랜서 소득에서 3.3%(소득세 3% + 지방소득세 0.3%)를 미리 떼는 것입니다. 5월 종합소득세 신고 시 실제 세금과 비교하여 추가 납부하거나 환급받습니다.</div></div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -257,6 +275,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

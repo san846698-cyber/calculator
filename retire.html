@@ -31,7 +31,19 @@
         .sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}.sidebar-card h3{font-size:.9rem;font-weight:700;margin-bottom:12px}.sidebar-card a{display:block;padding:8px 0;font-size:.85rem;color:var(--text-700);border-bottom:1px solid var(--border-light)}.sidebar-card a:last-child{border:none}.sidebar-card a:hover{color:var(--primary)}
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"퇴직금은 언제부터 받을 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"1년 이상 계속 근로한 경우 퇴직 시 퇴직금을 받을 수 있습니다. 주 15시간 미만 근로자(초단시간 근로자)는 제외됩니다."}},{"@type":"Question","name":"퇴직금 계산 공식은?","acceptedAnswer":{"@type":"Answer","text":"퇴직금 = 1일 평균임금 × 30일 × (재직일수 ÷ 365). 평균임금은 퇴직 전 3개월간 지급된 임금 총액을 해당 기간 총 일수로 나눈 금액입니다."}},{"@type":"Question","name":"퇴직금에도 세금이 붙나요?","acceptedAnswer":{"@type":"Answer","text":"네, 퇴직소득세가 부과됩니다. 다만 근속연수공제가 있어 장기 근속자일수록 세 부담이 줄어듭니다. IRP로 이체하면 퇴직소득세가 이연되어 연금 수령 시 30~40% 감면됩니다."}},{"@type":"Question","name":"월평균임금에 뭐가 포함되나요?","acceptedAnswer":{"@type":"Answer","text":"기본급, 고정 상여금, 고정 수당(직책수당, 자격수당 등), 연차수당이 포함됩니다. 성과급, 실비 변상적 수당(교통비 실비 등)은 제외됩니다."}},{"@type":"Question","name":"중간정산 받으면 퇴직금이 줄어드나요?","acceptedAnswer":{"@type":"Answer","text":"중간정산 시점 이후부터 새로 퇴직금이 쌓이기 시작합니다. 중간정산 이전 기간은 정산 완료된 것이므로 최종 퇴직금은 줄어들 수 있습니다."}},{"@type":"Question","name":"1년 미만이면 퇴직금이 없나요?","acceptedAnswer":{"@type":"Answer","text":"원칙적으로 1년 미만 근무 시 퇴직금 지급 의무가 없습니다. 다만 회사 내규에 따라 지급하는 경우도 있으니 취업규칙을 확인하세요."}},{"@type":"Question","name":"퇴직금을 IRP로 받으면 세금이 줄어드나요?","acceptedAnswer":{"@type":"Answer","text":"네, IRP(개인형 퇴직연금)로 이체하면 퇴직소득세가 이연됩니다. 55세 이후 연금으로 수령하면 퇴직소득세의 60~70%만 납부하면 되어 세금이 크게 줄어듭니다."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -128,7 +140,38 @@
                 <h3>퇴직금 세금</h3>
                 <p>퇴직소득세는 근속연수에 따라 공제액이 커져 장기 근속자일수록 세 부담이 줄어듭니다. 퇴직금을 IRP(개인형 퇴직연금)로 이체하면 퇴직소득세가 이연되어 연금 수령 시 30~40% 감면된 세율로 과세됩니다.</p>
             </div>
-        </div>
+        <div class="faq-section">
+<h2>❓ 퇴직금 자주 묻는 질문</h2>
+<div class="faq-item">
+<div class="faq-q">퇴직금은 언제부터 받을 수 있나요?<span class="icon">+</span></div>
+<div class="faq-a">1년 이상 계속 근로한 경우 퇴직 시 퇴직금을 받을 수 있습니다. 주 15시간 미만 근로자(초단시간 근로자)는 제외됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">퇴직금 계산 공식은?<span class="icon">+</span></div>
+<div class="faq-a">퇴직금 = 1일 평균임금 × 30일 × (재직일수 ÷ 365). 평균임금은 퇴직 전 3개월간 지급된 임금 총액을 해당 기간 총 일수로 나눈 금액입니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">퇴직금에도 세금이 붙나요?<span class="icon">+</span></div>
+<div class="faq-a">네, 퇴직소득세가 부과됩니다. 다만 근속연수공제가 있어 장기 근속자일수록 세 부담이 줄어듭니다. IRP로 이체하면 퇴직소득세가 이연되어 연금 수령 시 30~40% 감면됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">월평균임금에 뭐가 포함되나요?<span class="icon">+</span></div>
+<div class="faq-a">기본급, 고정 상여금, 고정 수당(직책수당, 자격수당 등), 연차수당이 포함됩니다. 성과급, 실비 변상적 수당(교통비 실비 등)은 제외됩니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">중간정산 받으면 퇴직금이 줄어드나요?<span class="icon">+</span></div>
+<div class="faq-a">중간정산 시점 이후부터 새로 퇴직금이 쌓이기 시작합니다. 중간정산 이전 기간은 정산 완료된 것이므로 최종 퇴직금은 줄어들 수 있습니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">1년 미만이면 퇴직금이 없나요?<span class="icon">+</span></div>
+<div class="faq-a">원칙적으로 1년 미만 근무 시 퇴직금 지급 의무가 없습니다. 다만 회사 내규에 따라 지급하는 경우도 있으니 취업규칙을 확인하세요.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">퇴직금을 IRP로 받으면 세금이 줄어드나요?<span class="icon">+</span></div>
+<div class="faq-a">네, IRP(개인형 퇴직연금)로 이체하면 퇴직소득세가 이연됩니다. 55세 이후 연금으로 수령하면 퇴직소득세의 60~70%만 납부하면 되어 세금이 크게 줄어듭니다.</div>
+</div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -229,6 +272,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>

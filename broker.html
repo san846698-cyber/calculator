@@ -34,7 +34,19 @@
         .seo-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin:24px 0}.seo-section h2{font-size:1.05rem;font-weight:700;margin-bottom:14px}.seo-section h3{font-size:.95rem;font-weight:700;margin:16px 0 8px}.seo-section p{font-size:.88rem;color:var(--text-500);line-height:1.8;margin-bottom:10px}
         footer{border-top:1px solid var(--border);margin-top:40px;padding:32px 0;text-align:center}footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
         #wolseFields{display:none}
-    </style>
+    
+.faq-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:20px}
+.faq-section h2{font-size:1.1rem;font-weight:800;margin-bottom:16px}
+.faq-item{border-bottom:1px solid var(--border-light);padding:0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;font-size:.9rem;font-weight:600;color:var(--text-900)}
+.faq-q:hover{color:var(--primary)}
+.faq-q .icon{font-size:1.2rem;transition:transform .2s;color:var(--text-400)}
+.faq-q.open .icon{transform:rotate(45deg);color:var(--primary)}
+.faq-a{display:none;padding:0 0 16px;font-size:.85rem;color:var(--text-700);line-height:1.7}
+.faq-a.open{display:block}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"중개수수료는 협상 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"네, 법정 상한요율 이내에서 협상이 가능합니다. 특히 고가 물건일수록 협상 여지가 큽니다. 계약 전에 수수료를 미리 합의하는 것이 좋습니다."}},{"@type":"Question","name":"부가세는 별도인가요?","acceptedAnswer":{"@type":"Answer","text":"일반과세자 중개사는 수수료에 부가가치세 10%를 별도로 부과합니다. 간이과세자는 부가세가 낮거나 면제될 수 있으니 사전에 확인하세요."}},{"@type":"Question","name":"전세 중개수수료는 누가 내나요?","acceptedAnswer":{"@type":"Answer","text":"임대인(집주인)과 임차인(세입자)이 각각 중개수수료를 지불합니다. 한쪽이 전액 부담하는 것은 관행일 뿐 법적 근거는 없습니다."}},{"@type":"Question","name":"중개수수료 현금영수증 가능한가요?","acceptedAnswer":{"@type":"Answer","text":"네, 중개수수료도 현금영수증 발급 대상입니다. 발급 요청하면 소득공제를 받을 수 있으니 꼭 요청하세요."}}]}</script>
 </head>
 <body>
 <nav class="top-nav"><div class="nav-inner"><a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a><div class="nav-links"><a href="salary.html">연봉 실수령액</a><a href="loan.html">대출 이자</a><a href="savings.html">적금/예금</a><a href="rent.html">전세 vs 월세</a></div><button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button></div></nav>
@@ -133,7 +145,26 @@
                 <h3>월세 거래금액 환산</h3>
                 <p>월세의 경우 거래금액 = 보증금 + (월세 × 100)으로 환산합니다. 다만 환산금액이 5천만원 미만이면 거래금액 = 보증금 + (월세 × 70)으로 계산합니다.</p>
             </div>
-        </div>
+        <div class="faq-section">
+<h2>❓ 중개수수료 자주 묻는 질문</h2>
+<div class="faq-item">
+<div class="faq-q">중개수수료는 협상 가능한가요?<span class="icon">+</span></div>
+<div class="faq-a">네, 법정 상한요율 이내에서 협상이 가능합니다. 특히 고가 물건일수록 협상 여지가 큽니다. 계약 전에 수수료를 미리 합의하는 것이 좋습니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">부가세는 별도인가요?<span class="icon">+</span></div>
+<div class="faq-a">일반과세자 중개사는 수수료에 부가가치세 10%를 별도로 부과합니다. 간이과세자는 부가세가 낮거나 면제될 수 있으니 사전에 확인하세요.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">전세 중개수수료는 누가 내나요?<span class="icon">+</span></div>
+<div class="faq-a">임대인(집주인)과 임차인(세입자)이 각각 중개수수료를 지불합니다. 한쪽이 전액 부담하는 것은 관행일 뿐 법적 근거는 없습니다.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">중개수수료 현금영수증 가능한가요?<span class="icon">+</span></div>
+<div class="faq-a">네, 중개수수료도 현금영수증 발급 대상입니다. 발급 요청하면 소득공제를 받을 수 있으니 꼭 요청하세요.</div>
+</div>
+</div>
+</div>
 
         <div class="sidebar">
             <div class="ad-space ad-sidebar">Advertisement</div>
@@ -240,6 +271,15 @@ function copyResult() {
     else { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
     alert('결과가 복사되었습니다!');
 }
+
+document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+        const a=q.nextElementSibling;
+        const wasOpen=q.classList.contains('open');
+        document.querySelectorAll('.faq-q').forEach(x=>{x.classList.remove('open');x.nextElementSibling.classList.remove('open');});
+        if(!wasOpen){q.classList.add('open');a.classList.add('open');}
+    });
+});
 </script>
 </body>
 </html>
