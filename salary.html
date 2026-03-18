@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 연봉 실수령액 계산기 - 월급쟁이 계산기</title>
+    <title>2026 연봉 실수령액 계산기 - 직장인 계산기</title>
+    <link rel="canonical" href="https://san846698-cyber.github.io/calculator/salary.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="2026 연봉 실수령액 계산기">
+    <meta property="og:description" content="4대보험·소득세 적용 월 실수령액을 3초 만에 계산하세요">
+    <meta property="og:url" content="https://san846698-cyber.github.io/calculator/salary.html">
+    <meta property="og:site_name" content="직장인 계산기">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="2026 연봉 실수령액 계산기">
+    <meta name="twitter:description" content="4대보험·소득세 적용 월 실수령액을 3초 만에 계산하세요">
     <meta name="description" content="2026년 연봉 실수령액 계산기. 4대보험, 소득세, 지방소득세를 적용한 월 실수령액을 즉시 계산합니다. 연봉 3000만원, 4000만원, 5000만원 실수령액 확인.">
     <meta name="keywords" content="연봉 계산기, 실수령액 계산기, 2026 연봉, 월급 계산기, 4대보험 계산, 소득세 계산">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #F5F6F8; --surface: #FFFFFF; --primary: #1A56DB; --primary-light: #EBF0FE;
-            --primary-dark: #1342A8; --text-900: #111827; --text-700: #374151; --text-500: #6B7280;
+            --bg: #F0FAF6; --surface: #FFFFFF; --primary: #0D9668; --primary-light: #ECFDF5;
+            --primary-dark: #047857; --text-900: #111827; --text-700: #374151; --text-500: #6B7280;
             --text-400: #9CA3AF; --border: #E5E7EB; --border-light: #F3F4F6; --success: #059669;
             --danger: #DC2626; --ad-bg: #E5E7EB; --shadow: 0 1px 3px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.05); --radius: 12px; --radius-lg: 16px;
@@ -21,10 +33,10 @@
         html { font-size: 16px; }
         body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: var(--bg); color: var(--text-900); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         a { text-decoration: none; color: inherit; }
-        .top-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .top-nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(209,213,219,0.5); position: sticky; top: 0; z-index: 100; }
         .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
         .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .nav-logo .icon { width: 28px; height: 28px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 900; }
+        .nav-logo .icon { width: 28px; height: 28px; background: linear-gradient(135deg,#10B981,#047857); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 900; }
         .nav-links { display: flex; gap: 4px; }
         .nav-links a { padding: 6px 12px; font-size: 0.85rem; font-weight: 500; color: var(--text-500); border-radius: 8px; transition: all 0.15s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--primary-light); }
@@ -285,7 +297,7 @@
 
 <nav class="top-nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a>
+        <a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a>
         <div class="nav-links">
             <a href="salary.html" class="active">연봉 실수령액</a>
             <a href="loan.html">대출 이자</a>
@@ -415,15 +427,38 @@
                     <tr><td>공제 합계</td><td id="r_total_deduct" style="color:var(--danger);font-weight:800">0원</td></tr>
                     <tr class="total-row"><td>월 실수령액</td><td id="r_net" style="color:var(--primary)">0원</td></tr>
                 </table>
+                <div class="chart-wrap" id="chartWrap" style="display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+                    <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:12px">📊 공제 항목별 비율</h3>
+                    <canvas id="deductChart" height="220"></canvas>
+                </div>
+                <div class="share-btns" id="shareBtns" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);display:none;gap:8px;flex-wrap:wrap">
+                    <button onclick="saveAsImage()" style="flex:1;min-width:140px;padding:10px 16px;background:#059669;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer">📷 이미지로 저장</button>
+                    <button onclick="shareKakao()" style="flex:1;min-width:140px;padding:10px 16px;background:#FEE500;color:#3C1E1E;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer">💬 카카오톡 공유</button>
+                    <button onclick="copyResult()" style="flex:1;min-width:140px;padding:10px 16px;background:var(--primary-light);color:var(--primary);border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer">📋 결과 복사</button>
+                </div>
             </div>
 
             <div class="seo-section">
-                <h2>연봉 실수령액 계산기 사용법</h2>
-                <p>연봉 실수령액은 세전 연봉에서 국민연금, 건강보험, 장기요양보험, 고용보험 등 4대보험료와 소득세, 지방소득세를 공제한 후 실제로 통장에 입금되는 금액입니다.</p>
-                <h3>2026년 4대보험 요율</h3>
-                <p>국민연금 4.5%, 건강보험 3.545%, 장기요양보험 건강보험의 12.95%, 고용보험 0.9%가 적용됩니다. 비과세액(식대 월 20만원 등)을 제외한 과세금액에서 공제됩니다.</p>
-                <h3>연봉별 실수령액 예시</h3>
-                <p>연봉 3,000만원의 월 실수령액은 약 224만원, 연봉 4,000만원은 약 292만원, 연봉 5,000만원은 약 354만원 수준입니다. (부양가족 1명, 비과세 20만원 기준, 참고용)</p>
+                <h2>2026 연봉 실수령액 계산기 완벽 가이드</h2>
+                <p>연봉 실수령액이란 세전 연봉에서 국민연금, 건강보험, 장기요양보험, 고용보험 등 4대 사회보험료와 근로소득세, 지방소득세를 공제한 뒤 실제로 통장에 입금되는 금액입니다. 같은 연봉이라도 부양가족 수, 비과세 항목, 퇴직금 포함 여부에 따라 실수령액이 달라지므로 정확한 계산이 중요합니다.</p>
+
+                <h3>2026년 4대보험 요율 상세</h3>
+                <p>2026년 기준 4대보험 근로자 부담분은 다음과 같습니다. 국민연금은 월 소득의 4.5% (사업주 4.5% 별도, 상한액 월 590만원 기준 최대 265,500원), 건강보험은 3.545% (사업주 3.545% 별도), 장기요양보험은 건강보험료의 12.95%, 고용보험은 0.9%입니다. 이 보험료들은 비과세액을 제외한 과세 대상 급여에서 계산됩니다.</p>
+
+                <h3>비과세 항목이란?</h3>
+                <p>비과세 항목은 급여 중 세금이 부과되지 않는 부분으로, 대표적으로 식대(월 20만원까지), 자가운전 보조금(월 20만원까지), 출산·보육수당(월 20만원까지), 연구활동비(월 20만원까지) 등이 있습니다. 비과세 항목이 클수록 과세 대상 급여가 줄어들어 세금과 보험료가 감소하고 실수령액은 증가합니다. 회사에서 식대를 별도 지급하는 경우 반드시 비과세액에 포함하여 계산해야 정확한 실수령액을 확인할 수 있습니다.</p>
+
+                <h3>퇴직금 별도 vs 포함의 차이</h3>
+                <p>대부분의 회사는 연봉과 퇴직금을 별도로 지급합니다. 그러나 일부 회사에서는 연봉에 퇴직금을 포함하여 제시하기도 합니다. 퇴직금 포함 시 실제 월 급여는 연봉을 13으로 나눈 금액이 되므로 (12개월 급여 + 1개월 퇴직금), 별도 기준보다 실수령액이 약 8% 정도 줄어듭니다. 계약서 확인 시 퇴직금 포함 여부를 반드시 체크하세요.</p>
+
+                <h3>2026년 연봉별 실수령액 비교표</h3>
+                <p>부양가족 1명(본인), 비과세 20만원, 퇴직금 별도 기준 주요 연봉 구간별 월 실수령액 참고치입니다. 연봉 2,500만원은 약 189만원, 3,000만원은 약 224만원, 3,500만원은 약 258만원, 4,000만원은 약 292만원, 5,000만원은 약 354만원, 6,000만원은 약 411만원, 7,000만원은 약 466만원, 1억원은 약 631만원 수준입니다. 연봉이 높아질수록 소득세 누진세율이 적용되어 공제율이 증가합니다.</p>
+
+                <h3>소득세 누진세율 구간 (2026년 기준)</h3>
+                <p>근로소득에 적용되는 소득세 세율은 과세표준에 따라 6단계로 나뉩니다. 1,400만원 이하 6%, 1,400~5,000만원 15%, 5,000~8,800만원 24%, 8,800~1.5억원 35%, 1.5~3억원 38%, 3~5억원 40%, 5~10억원 42%, 10억원 초과 45%입니다. 지방소득세는 소득세의 10%가 추가 부과됩니다. 연봉이 높아지면 한계세율이 급격히 높아지므로 고연봉자일수록 절세 전략이 중요합니다.</p>
+
+                <h3>연봉 협상 시 꼭 확인할 사항</h3>
+                <p>연봉 협상 시에는 세전 연봉뿐만 아니라 실수령액 기준으로 비교하는 것이 현명합니다. 또한 성과급·인센티브 지급 조건, 식대·교통비 등 비과세 복리후생 항목, 퇴직금 별도/포함 여부, 연봉 인상률 기준, 4대보험 가입 여부(특히 중소기업)를 꼼꼼히 확인해야 합니다. 같은 세전 연봉이라도 이런 조건에 따라 실수령액이 월 수십만원 차이날 수 있습니다.</p>
             </div>
         </div>
 
@@ -444,7 +479,7 @@
 
 <footer>
     <div class="container">
-        <p>© 2026 월급쟁이 계산기. 직장인을 위한 무료 금융 계산기.</p>
+        <p>© 2026 직장인 계산기. 직장인을 위한 무료 금융 계산기.</p>
         <p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
     </div>
 </footer>
@@ -559,6 +594,70 @@ function calcSalary() {
 
     document.getElementById('resultCard').classList.add('show');
     document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Show share buttons
+    document.getElementById('shareBtns').style.display = 'flex';
+
+    // Chart
+    document.getElementById('chartWrap').style.display = 'block';
+    const ctx = document.getElementById('deductChart').getContext('2d');
+    if (window.salaryChart) window.salaryChart.destroy();
+    window.salaryChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['실수령액', '국민연금', '건강보험', '장기요양', '고용보험', '소득세', '지방소득세'],
+            datasets: [{
+                data: [netPay, npsActual, health, care, employ, incomeTax, localTax],
+                backgroundColor: ['#0D9668', '#F59E0B', '#10B981', '#6366F1', '#EC4899', '#EF4444', '#F97316'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { font: { size: 11, family: 'Noto Sans KR' }, padding: 12, usePointStyle: true } },
+                tooltip: { callbacks: { label: function(c) { return c.label + ': ' + Math.round(c.raw).toLocaleString() + '원 (' + ((c.raw/monthlyGross)*100).toFixed(1) + '%)'; } } }
+            }
+        }
+    });
+
+    // Store for share
+    window._salaryResult = { salary: salaryManwon, netPay, totalDeduction, monthlyGross };
+}
+
+function saveAsImage() {
+    const el = document.getElementById('resultCard');
+    html2canvas(el, { backgroundColor: '#ffffff', scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = '연봉_실수령액_계산결과.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+function shareKakao() {
+    const r = window._salaryResult;
+    if (!r) return;
+    const text = '💰 연봉 실수령액 계산 결과\n연봉: ' + r.salary.toLocaleString() + '만원\n월 실수령액: ' + Math.round(r.netPay).toLocaleString() + '원\n공제합계: ' + Math.round(r.totalDeduction).toLocaleString() + '원\n\n👉 직접 계산해보기: https://san846698-cyber.github.io/calculator/salary.html';
+    if (navigator.share) {
+        navigator.share({ title: '연봉 실수령액 계산 결과', text: text });
+    } else {
+        copyToClipboard(text);
+        alert('결과가 클립보드에 복사되었습니다! 카카오톡에 붙여넣기 하세요.');
+    }
+}
+
+function copyResult() {
+    const r = window._salaryResult;
+    if (!r) return;
+    const text = '연봉 ' + r.salary.toLocaleString() + '만원 → 월 실수령액: ' + Math.round(r.netPay).toLocaleString() + '원 (공제 ' + Math.round(r.totalDeduction).toLocaleString() + '원)';
+    copyToClipboard(text);
+    alert('결과가 복사되었습니다!');
+}
+
+function copyToClipboard(text) {
+    if (navigator.clipboard) { navigator.clipboard.writeText(text); }
+    else { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
 }
 </script>
 

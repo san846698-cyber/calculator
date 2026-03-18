@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대출 이자 계산기 - 원리금균등, 원금균등, 만기일시 | 월급쟁이 계산기</title>
+    <title>대출 이자 계산기 - 원리금균등, 원금균등, 만기일시 | 직장인 계산기</title>
+    <link rel="canonical" href="https://san846698-cyber.github.io/calculator/loan.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="대출 이자 계산기">
+    <meta property="og:description" content="원리금균등·원금균등·만기일시 상환별 월 납입액과 총 이자 비교">
+    <meta property="og:url" content="https://san846698-cyber.github.io/calculator/loan.html">
+    <meta property="og:site_name" content="직장인 계산기">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="대출 이자 계산기">
+    <meta name="twitter:description" content="원리금균등·원금균등·만기일시 상환별 월 납입액과 총 이자 비교">
     <meta name="description" content="대출 이자 계산기. 원리금균등, 원금균등, 만기일시 상환 방식별 월 납입액과 총 이자를 계산합니다. 주택담보대출, 신용대출 이자 비교.">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg: #F5F6F8; --surface: #FFFFFF; --primary: #1A56DB; --primary-light: #EBF0FE; --primary-dark: #1342A8; --text-900: #111827; --text-700: #374151; --text-500: #6B7280; --text-400: #9CA3AF; --border: #E5E7EB; --border-light: #F3F4F6; --success: #059669; --danger: #DC2626; --ad-bg: #E5E7EB; --shadow: 0 1px 3px rgba(0,0,0,0.06); --radius: 12px; --radius-lg: 16px; }
+        :root { --bg: #F0FAF6; --surface: #FFFFFF; --primary: #0D9668; --primary-light: #ECFDF5; --primary-dark: #047857; --text-900: #111827; --text-700: #374151; --text-500: #6B7280; --text-400: #9CA3AF; --border: #E5E7EB; --border-light: #F3F4F6; --success: #059669; --danger: #DC2626; --ad-bg: #E5E7EB; --shadow: 0 1px 3px rgba(0,0,0,0.06); --radius: 12px; --radius-lg: 16px; }
         html { font-size: 16px; }
         body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: var(--bg); color: var(--text-900); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         a { text-decoration: none; color: inherit; }
-        .top-nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .top-nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(209,213,219,0.5); position: sticky; top: 0; z-index: 100; }
         .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
         .nav-logo { font-size: 1.15rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .nav-logo .icon { width: 28px; height: 28px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 900; }
+        .nav-logo .icon { width: 28px; height: 28px; background: linear-gradient(135deg,#10B981,#047857); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.85rem; font-weight: 900; }
         .nav-links { display: flex; gap: 4px; }
         .nav-links a { padding: 6px 12px; font-size: 0.85rem; font-weight: 500; color: var(--text-500); border-radius: 8px; transition: all 0.15s; }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--primary-light); }
@@ -101,7 +113,7 @@
 
 <nav class="top-nav">
     <div class="nav-inner">
-        <a href="index.html" class="nav-logo"><div class="icon">₩</div>월급쟁이 계산기</a>
+        <a href="index.html" class="nav-logo"><div class="icon">₩</div>직장인 계산기</a>
         <div class="nav-links">
             <a href="salary.html">연봉 실수령액</a>
             <a href="loan.html" class="active">대출 이자</a>
@@ -227,14 +239,30 @@
                         <tbody id="scheduleBody"></tbody>
                     </table>
                 </div>
+                <div class="chart-wrap" id="chartWrap" style="display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+                    <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:12px">📊 원금 vs 이자 비율</h3>
+                    <canvas id="loanChart" height="220"></canvas>
+                </div>
+                <div class="share-btns" id="shareBtns" style="display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);gap:8px;flex-wrap:wrap">
+                    <button onclick="saveAsImage()" style="flex:1;min-width:140px;padding:10px 16px;background:#059669;color:#fff;border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer">📷 이미지로 저장</button>
+                    <button onclick="copyResult()" style="flex:1;min-width:140px;padding:10px 16px;background:var(--primary-light);color:var(--primary);border:none;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer">📋 결과 복사</button>
+                </div>
             </div>
 
             <div class="seo-section">
-                <h2>대출 이자 계산기 사용법</h2>
-                <h3>상환 방식별 차이</h3>
-                <p><strong>원리금균등상환</strong>은 매월 같은 금액을 납입합니다. 초기에는 이자 비중이 크고 후반으로 갈수록 원금 비중이 커집니다. 매월 고정 금액으로 예산 계획이 쉬운 것이 장점입니다.</p>
-                <p><strong>원금균등상환</strong>은 매월 같은 원금을 상환하고, 이자는 남은 잔액에 대해 계산됩니다. 초기 납입액이 크지만 총 이자는 원리금균등보다 적습니다.</p>
-                <p><strong>만기일시상환</strong>은 대출 기간 동안 이자만 납입하고 만기에 원금을 한번에 상환하는 방식입니다. 월 부담은 가장 적지만 총 이자는 가장 많습니다.</p>
+                <h2>대출 이자 계산기 완벽 가이드</h2>
+                <p>대출 이자 계산기는 주택담보대출, 신용대출, 전세자금대출 등 다양한 대출 상품의 월 납입액과 총 이자 비용을 미리 계산할 수 있는 도구입니다. 상환 방식에 따라 총 이자 부담이 수백만원에서 수천만원까지 차이나므로, 대출 신청 전 반드시 비교해보는 것이 중요합니다.</p>
+
+                <h3>상환 방식별 특징과 선택 가이드</h3>
+                <p><strong>원리금균등상환</strong>은 매월 동일한 금액을 납입하는 방식입니다. 초기에는 이자 비중이 크고 후반으로 갈수록 원금 상환 비중이 커집니다. 매월 고정금액이라 가계 예산 관리가 편리하며, 일반적인 주택담보대출에서 가장 많이 선택되는 방식입니다.</p>
+                <p><strong>원금균등상환</strong>은 매월 같은 금액의 원금을 상환하며 이자는 남은 잔액에 대해 계산됩니다. 초기 납입액이 가장 크지만 점차 줄어들고, 총 이자 비용은 원리금균등보다 적습니다. 소득이 안정적이고 초기 부담을 감당할 수 있다면 가장 경제적인 선택입니다.</p>
+                <p><strong>만기일시상환</strong>은 대출 기간 동안 이자만 납입하고 만기 시 원금을 한꺼번에 상환합니다. 월 부담은 가장 적지만 총 이자는 가장 많습니다. 전세자금대출이나 단기 사업자금 대출에 주로 활용됩니다.</p>
+
+                <h3>대출 금리 유형: 고정금리 vs 변동금리</h3>
+                <p>고정금리는 대출 기간 동안 금리가 변하지 않아 월 납입액을 예측하기 쉽습니다. 반면 변동금리는 시장 금리에 따라 주기적으로 조정되어 금리 하락기에는 유리하지만, 상승기에는 부담이 커질 수 있습니다. 2026년 현재 기준금리 동향을 고려하여 본인에게 유리한 금리 유형을 선택하세요.</p>
+
+                <h3>대출 시 확인해야 할 사항</h3>
+                <p>대출을 받기 전에는 금리 외에도 중도상환수수료(보통 대출 후 3년 이내 상환 시 잔여원금의 1~1.5% 부과), 대출 한도(DTI·DSR 규제에 따른 소득 대비 한도), 인지세(5천만원 초과 시 발생), 보증료 등 부대비용을 반드시 확인해야 합니다. 또한 금리 우대 조건(급여이체, 카드 실적 등)을 활용하면 0.1~0.5%p 금리 인하가 가능합니다.</p>
             </div>
         </div>
 
@@ -252,7 +280,7 @@
     <div class="ad-space ad-rect">Advertisement</div>
 </div>
 
-<footer><div class="container"><p>© 2026 월급쟁이 계산기.</p><p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p></div></footer>
+<footer><div class="container"><p>© 2026 직장인 계산기.</p><p>본 계산 결과는 참고용이며 법적 효력이 없습니다.</p></div></footer>
 
 <script>
 function fmt(n) { return Math.round(n).toLocaleString('ko-KR'); }
@@ -357,6 +385,39 @@ function calcLoan() {
     document.getElementById('scheduleWrap').classList.remove('show');
     document.getElementById('resultCard').classList.add('show');
     document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Chart
+    document.getElementById('chartWrap').style.display = 'block';
+    document.getElementById('shareBtns').style.display = 'flex';
+    const ctx = document.getElementById('loanChart').getContext('2d');
+    if (window.loanChart) window.loanChart.destroy();
+    window.loanChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['대출 원금', '총 이자'],
+            datasets: [{ data: [P, totalInterest], backgroundColor: ['#0D9668', '#EF4444'], borderWidth: 0 }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { font: { size: 12, family: 'Noto Sans KR' }, padding: 12, usePointStyle: true } },
+                tooltip: { callbacks: { label: function(c) { return c.label + ': ' + Math.round(c.raw).toLocaleString() + '원'; } } }
+            }
+        }
+    });
+    window._loanResult = { P, totalInterest, totalPay, firstPayment };
+}
+
+function saveAsImage() {
+    html2canvas(document.getElementById('resultCard'), { backgroundColor: '#fff', scale: 2 }).then(c => {
+        const a = document.createElement('a'); a.download = '대출이자_계산결과.png'; a.href = c.toDataURL(); a.click();
+    });
+}
+function copyResult() {
+    const r = window._loanResult; if (!r) return;
+    const t = '대출 원금: ' + Math.round(r.P).toLocaleString() + '원\n월 납입액: ' + Math.round(r.firstPayment).toLocaleString() + '원\n총 이자: ' + Math.round(r.totalInterest).toLocaleString() + '원';
+    if (navigator.clipboard) navigator.clipboard.writeText(t); else { const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta); }
+    alert('결과가 복사되었습니다!');
 }
 </script>
 
