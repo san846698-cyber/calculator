@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문의하기 | 직장인 계산기</title>
+<link rel="canonical" href="https://san846698-cyber.github.io/calculator/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="문의하기 - 직장인 계산기">
+<meta property="og:description" content="직장인 계산기에 대한 오류 신고, 기능 건의, 기타 문의를 보내주세요.">
+<meta property="og:site_name" content="직장인 계산기">
+<meta property="og:locale" content="ko_KR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F0FAF6;--surface:#FFF;--primary:#0D9668;--primary-light:#ECFDF5;--primary-medium:#D1FAE5;--primary-dark:#047857;--text-900:#064E3B;--text-700:#065F46;--text-500:#6B7280;--text-400:#9CA3AF;--border:#D1D5DB;--border-light:#E5E7EB;--radius-lg:20px}
+html{font-size:16px}
+body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--bg);color:var(--text-900);line-height:1.8}
+a{text-decoration:none;color:inherit}
+
+.nav{background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(209,213,219,0.5);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--primary)}
+.nav-logo .logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#10B981,#047857);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem;font-weight:900;box-shadow:0 2px 8px rgba(16,185,129,0.3)}
+.nav-links{display:flex;gap:4px}
+.nav-links a{padding:7px 14px;font-size:.84rem;font-weight:500;color:var(--text-500);border-radius:10px;transition:all .2s}
+.nav-links a:hover{color:var(--primary);background:var(--primary-light)}
+.mobile-btn{display:none;background:none;border:none;padding:8px;cursor:pointer;color:var(--text-700)}
+@media(max-width:768px){.nav-links{display:none}.mobile-btn{display:block}}
+.mobile-nav{display:none;background:var(--surface);border-bottom:1px solid var(--border-light);padding:8px 16px 16px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:10px 14px;font-size:.9rem;font-weight:500;color:var(--text-700);border-radius:10px}
+
+.container{max-width:640px;margin:0 auto;padding:0 20px}
+.content{background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:40px;margin:32px 0;box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.content h1{font-family:'Outfit','Noto Sans KR',sans-serif;font-size:1.5rem;font-weight:900;margin-bottom:8px;color:var(--text-900)}
+.content .sub{font-size:.9rem;color:var(--text-500);margin-bottom:32px}
+
+.contact-card{padding:24px;background:var(--primary-light);border:1px solid var(--primary-medium);border-radius:14px;margin-bottom:24px}
+.contact-card h3{font-size:.95rem;font-weight:700;color:var(--primary-dark);margin-bottom:8px}
+.contact-card p{font-size:.85rem;color:var(--text-700);margin-bottom:12px}
+.email-box{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px}
+.email-box span{font-size:.95rem;font-weight:600;color:var(--text-900);flex:1}
+.email-box button{padding:8px 18px;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .2s}
+.email-box button:hover{background:var(--primary-dark)}
+.email-box button.copied{background:#059669}
+
+.guide{margin-top:24px}
+.guide h3{font-size:.95rem;font-weight:700;color:var(--text-900);margin-bottom:12px}
+.guide-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.guide-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.guide-icon.bug{background:#FEF2F2;color:#DC2626}
+.guide-icon.idea{background:#FFFBEB;color:#B45309}
+.guide-icon.etc{background:#EFF6FF;color:#1D4ED8}
+.guide-text{font-size:.85rem;color:var(--text-700);line-height:1.6}
+.guide-text strong{color:var(--text-900)}
+
+footer{margin-top:48px;padding:32px 0;border-top:1px solid var(--border-light);background:#F8FAFB;text-align:center}
+footer p{font-size:.78rem;color:var(--text-400);margin-bottom:4px}
+footer a{color:var(--primary);font-weight:500}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="logo-icon">₩</div>직장인 계산기</a>
+    <div class="nav-links">
+        <a href="index.html">홈</a>
+        <a href="salary.html">연봉</a>
+        <a href="about.html">소개</a>
+        <a href="contact.html" style="color:var(--primary);background:var(--primary-light)">문의</a>
+    </div>
+    <button class="mobile-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+<a href="index.html">🏠 홈</a>
+<a href="salary.html">💰 연봉 실수령액</a>
+<a href="loan.html">🏦 대출 이자</a>
+<a href="yearend.html">🧾 연말정산</a>
+<a href="about.html">📖 소개</a>
+<a href="contact.html">📩 문의하기</a>
+</div>
+
+<div class="container">
+<div class="content">
+    <h1>📩 문의하기</h1>
+    <p class="sub">오류 신고, 기능 건의, 기타 문의를 보내주세요.</p>
+
+    <div class="contact-card">
+        <h3>이메일로 문의</h3>
+        <p>아래 이메일 주소로 문의 내용을 보내주시면 확인 후 답변드리겠습니다.</p>
+        <div class="email-box">
+            <span id="emailAddr">salary.calc.kr@gmail.com</span>
+            <button id="copyBtn" onclick="copyEmail()">복사</button>
+        </div>
+    </div>
+
+    <div class="guide">
+        <h3>이런 내용을 보내주세요</h3>
+        <div class="guide-item">
+            <div class="guide-icon bug">🐛</div>
+            <div class="guide-text"><strong>오류 신고</strong> — 계산 결과가 실제와 다르거나, 페이지가 정상 작동하지 않을 때</div>
+        </div>
+        <div class="guide-item">
+            <div class="guide-icon idea">💡</div>
+            <div class="guide-text"><strong>기능 건의</strong> — 새로운 계산기 추가 요청, 기존 기능 개선 아이디어</div>
+        </div>
+        <div class="guide-item">
+            <div class="guide-icon etc">💬</div>
+            <div class="guide-text"><strong>기타 문의</strong> — 광고 제휴, 협업 제안, 기타 궁금한 사항</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<footer>
+<div class="container">
+    <p style="font-size:.9rem;font-weight:600;color:#065F46;margin-bottom:8px">직장인 계산기</p>
+    <p><a href="about.html">서비스 소개</a> · <a href="privacy.html">개인정보처리방침</a> · <a href="contact.html">문의하기</a></p>
+    <p>© 2026 직장인 계산기. 본 계산 결과는 참고용이며 법적 효력이 없습니다.</p>
+</div>
+</footer>
+
+<script>
+function copyEmail() {
+    const email = document.getElementById('emailAddr').textContent;
+    const btn = document.getElementById('copyBtn');
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(email);
+    } else {
+        const ta = document.createElement('textarea');
+        ta.value = email;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+    }
+    btn.textContent = '복사됨!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('copied'); }, 2000);
+}
+</script>
+</body>
+</html>
